@@ -17,11 +17,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primaryDark:"black",
-        primaryLight:"white",
-        secondaryDark:"gray",
-        secondaryLight:"green",
-        BRAND:"purple"
+        primary:"#000814",
+
       },
       fontFamily: {
         body: [
