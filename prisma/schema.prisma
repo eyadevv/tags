@@ -3,16 +3,44 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url = env("DATABASE_URL")
+  provider     = "postgresql"
+  url          = env("DATABASE_URL")
   relationMode = "prisma"
 }
 
+enum USERTYPE {
+  GUEST
+  PRO
+}
+
 model user {
-  id String @unique @id @default(uuid())
-  name String
-  avatar String
-  email String?
-  accountNumber Int 
-  isPremium Boolean @default(false)
+  id            String   @id @unique @default(uuid())
+  name          String
+  avatar        String
+  email         String?
+  accountNumber Int
+  type          USERTYPE
+  createdTags   tag[]    @relation("created")
+  usedTags      tag[]    @relation("used")
+}
+
+enum TAGSTYPE {
+  FREE
+  PREMIUM
+  PAID
+}
+
+model tag {
+  id         String   @unique @default(uuid())
+  type       TAGSTYPE
+  background String
+  font       String
+  bankStyle  String
+  user       user?    @relation(fields: [userId], references: [id], "created")
+  userId     String?
+  creator    user     @relation(fields: [creatorId], references: [id], "used")
+  creatorId  String
+
+  @@index([creatorId])
+  @@index([userId])
 }
