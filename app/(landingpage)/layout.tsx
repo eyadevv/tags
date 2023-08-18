@@ -1,4 +1,4 @@
-import "../styles/tailwind.css"
+import "@/styles/tailwind.css"
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
