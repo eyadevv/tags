@@ -22,6 +22,8 @@ model user {
   type          USERTYPE
   createdTags   tag[]    @relation("created")
   usedTags      tag[]    @relation("used")
+
+  @@unique([id, name])
 }
 
 enum TAGSTYPE {
@@ -31,16 +33,17 @@ enum TAGSTYPE {
 }
 
 model tag {
-  id         String   @unique @default(uuid())
-  type       TAGSTYPE
-  background String
-  font       String
-  bankStyle  String
-  user       user?    @relation(fields: [userId], references: [id], "created")
-  userId     String?
-  creator    user     @relation(fields: [creatorId], references: [id], "used")
-  creatorId  String
+  id          String   @unique @default(uuid())
+  type        TAGSTYPE
+  background  String
+  font        String
+  bankStyle   String
+  user        user?    @relation(fields: [userId], references: [id], "created")
+  userId      String?
+  creator     user?    @relation(fields: [creatorId, creatorName], references: [id, name], "used")
+  creatorId   String?
+  creatorName String   @default("ORIGINAL")
 
-  @@index([creatorId])
+  @@index([creatorId, creatorName])
   @@index([userId])
 }
