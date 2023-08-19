@@ -1,6 +1,6 @@
 import "@/styles/tailwind.css"
 import { Metadata } from "next"
-
+import Footer from "@/components/Footer/Footer"
 export const metadata: Metadata = {
   title: 'TAGS',
   description:"Payment Tags Made Easy"
@@ -14,7 +14,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <main>
+        {children}
+
+        </main>
+        <Footer />
+        </body>
+
     </html>
   )
 }
