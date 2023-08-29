@@ -16,9 +16,7 @@ const page = async ({ params }: { params: { type: string } }) => {
 
   return (
     <div className="flex min-h-screen w-full items-center justify-center bg-blue-900">
-      {tags
-        ? tags.map((tag) => <Tag bank="bankak" account="123435" name="eyad faisal nimir" number="0967098861" />)
-        : "No Tags Found"}
+      {tags ? tags.map((tag) => <Tag data={tag} />) : "No Tags Found"}
     </div>
   )
 }

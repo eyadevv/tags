@@ -36,9 +36,11 @@ enum TAGSTYPE {
 model tag {
   id          String   @unique @default(uuid())
   type        TAGSTYPE
-  background  String
-  font        String
-  bankStyle   String
+  bankName    String
+  accountNumber  String
+  name String
+  phoneNumber String
+  style      Json
   user        user?    @relation(fields: [userId], references: [id], "created")
   userId      String?
   creator     user?    @relation(fields: [creatorId, creatorName], references: [id, name], "used")
