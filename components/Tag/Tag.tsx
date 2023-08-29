@@ -1,20 +1,44 @@
-import { Button } from "../Button/Button"
-const Tag = ({bank , account , name , number ,type }:any) => {
+"use client"
+import Image from "next/image"
+import { useRef } from "react"
+import html2canvas from "html2canvas"
+// const handleDownloadImage = async (element: any) => {
+//   let canvas = await html2canvas(element)
+//   let data = canvas.toDataURL("image/jpg")
+//   let link = document.createElement("a")
+
+//   link.href = data
+//   link.download = "downloaded-image.jpg"
+
+//   document.body.appendChild(link)
+//   link.click()
+//   document.body.removeChild(link)
+// }
+
+const Tag = ({ bank, account, name, number, type }: any) => {
+  const TagRef = useRef(null)
   return (
-    <div className="w-72 h-72 gap-2 py-2 flex justify-center items-center rounded-xl flex-col" >
-        <span className="w-5/6 relative h-5/6 bg-primary gap-2 rounded flex flex-col justify-center items-center" >
-      <p className="absolute top-2 left-2" >{type}</p>
+    <div className="flex h-72 w-72 flex-col items-center justify-center gap-2 rounded-xl py-2">
+      <span
+        className="relative flex h-5/6 w-5/6 flex-col items-center justify-center gap-2 rounded bg-primary"
+        ref={TagRef}
+        // onClick={() => handleDownloadImage(TagRef.current)}
+      >
+        <p className="absolute left-2 top-2">{type}</p>
 
-        <p className="bg-white w-20 h-20 rounded-full" ></p>
-        <p className="font-bold text-lg" >{account}</p>
-        <p className="font-bold text-lg" >{name}</p>
-        <p className="font-bold text-lg" >{number}</p>
-    </span>
-    <span className="w-5/6 flex justify-around items-center" >
-        <Button href="/studio" intent='primary'>أستخدم</Button>
-    </span>
+        <img
+          alt="bank"
+          src={`/${bank}.png`}
+          width={50}
+          height={50}
+          className="h-20 w-20 rounded-full bg-white bg-opacity-10"
+        />
+
+        <p className="text-lg font-bold">{account}</p>
+        <p className="text-lg font-bold">{name}</p>
+        <p className="text-lg font-bold">{number}</p>
+      </span>
     </div>
-
   )
 }
 export default Tag
