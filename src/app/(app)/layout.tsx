@@ -2,6 +2,7 @@ import "@/style/global.css";
 import { Metadata } from "next";
 import Nav from "@/src/components/Nav/Nav";
 import Footer from "@/src/components/Footer/Footer";
+import { Analytics } from "@vercel/analytics/react";
 export const metadata: Metadata = {
   title: "TAGS",
   description: "Payment Tags Made Easy",
@@ -20,6 +21,8 @@ export default function RootLayout({
           {children}
         </section>
         <Footer />
+
+        <Analytics />
       </body>
     </html>
   );
