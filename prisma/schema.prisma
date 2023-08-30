@@ -4,7 +4,7 @@ generator client {
 }
 
 datasource db {
-  provider     = "mysql"
+  provider     = "postgresql"
   url          = env("DATABASE_URL")
   relationMode = "prisma"
 }
@@ -34,7 +34,7 @@ enum TAGSTYPE {
 }
 
 model tag {
-  id          String   @unique @default(uuid())
+  id          Int   @unique @default(autoincrement())
   type        TAGSTYPE
   bankName    String
   accountNumber  String

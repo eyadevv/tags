@@ -2,6 +2,7 @@
   "name": "current",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "docker compose up -d && next dev",
     "build": "next build",
@@ -26,6 +27,7 @@
     "react-dom": "18.2.0",
     "react-icons": "^4.10.1",
     "tailwindcss": "3.3.3",
+    "ts-node": "^10.9.1",
     "typescript": "5.2.2"
   }
 }
