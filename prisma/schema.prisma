@@ -1,11 +1,12 @@
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider     = "postgresql"
-  url          = env("DATABASE_URL")
+  provider = "postgresql"
+  // url          = env("DATABASE_URL")
+  url      = "postgresql://dev:dev@localhost:5432/tags"
+
   relationMode = "prisma"
 }
 
@@ -34,18 +35,18 @@ enum TAGSTYPE {
 }
 
 model tag {
-  id          Int   @unique @default(autoincrement())
-  type        TAGSTYPE
-  bankName    String
-  accountNumber  String
-  name String
-  phoneNumber String
-  style      Json
-  user        user?    @relation(fields: [userId], references: [id], "created")
-  userId      String?
-  creator     user?    @relation(fields: [creatorId, creatorName], references: [id, name], "used")
-  creatorId   String?
-  creatorName String   @default("ORIGINAL")
+  id            Int      @unique @default(autoincrement())
+  type          TAGSTYPE
+  bankName      String
+  accountNumber String
+  name          String
+  phoneNumber   String
+  style         Json
+  user          user?    @relation(fields: [userId], references: [id], "created")
+  userId        String?
+  creator       user?    @relation(fields: [creatorId, creatorName], references: [id, name], "used")
+  creatorId     String?
+  creatorName   String   @default("ORIGINAL")
 
   @@index([creatorId, creatorName])
   @@index([userId])
