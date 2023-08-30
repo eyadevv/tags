@@ -15,9 +15,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="w-screen bg-green-900 relative h-max bg-primary text-white flex flex-col justify-start items-center overflow-auto overflow-x-clip">
+      <body className="w-screen relative h-max bg-primary text-white flex flex-col justify-start items-center overflow-auto overflow-x-clip gap-6">
         <Nav />
-        <section className="w-11/12 h-max min-h-screen flex flex-col justify-start items-center bg-white rounded bg-opacity-10 ">
+        <section className="w-11/12 h-max min-h-screen bg-secondary-content flex flex-col justify-start items-center rounded-2xl bg-opacity-10 ">
           {children}
         </section>
         <Footer />
