@@ -1,32 +1,35 @@
-import { BiCrown, BiDollar } from "react-icons/bi";
+import { BiSolidCrown, BiDollar } from "react-icons/bi";
 const Tag = ({ data }: any) => {
-  const { id, type, bankName, accountNumber, name, phoneNumber, style } = data;
-  console.log(bankName);
+  const { id, type, bank, account, name, phone, style } = data;
+  const { bg, bank: bankstyle, font, text, icons, barcode } = style;
+
   return (
     <a
       href={`/studio/${id}`}
       className="flex h-72 w-72 flex-col items-center justify-center gap-2 rounded-xl py-2"
     >
-      <span className="relative flex h-5/6 w-5/6 flex-col items-center justify-center gap-2 rounded bg-primary">
+      <span
+        className={`relative flex h-5/6 w-5/6 flex-col items-center justify-center gap-2 rounded-xl bg-${bg}`}
+      >
         <p className="absolute left-2 top-2">
           {type === "PREMIUM" ? (
-            <BiCrown />
+            <BiSolidCrown color="gold" size={25} />
           ) : type === "PAID" ? (
-            <BiDollar />
+            <BiDollar color="gold" size={25} />
           ) : null}
         </p>
 
         <img
           alt="bank"
-          src={`/${bankName}.png`}
+          src={`/${bank}.png`}
           width={50}
           height={50}
-          className="h-20 w-20 rounded-full bg-white bg-opacity-10"
+          className={`h-20 w-20 rounded-full bg-white bg-opacity-10 ${bankstyle}`}
         />
 
-        <p className="text-lg font-bold">{accountNumber}</p>
-        <p className="text-lg font-bold">{name}</p>
-        <p className="text-lg font-bold">{phoneNumber}</p>
+        <p className="text-lg font-bold">{account}</p>
+        <p className="text-base font-bold">{name}</p>
+        <p className="text-sm">{phone}</p>
       </span>
     </a>
   );
