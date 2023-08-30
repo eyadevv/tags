@@ -1,14 +1,20 @@
-"use client";
-
+import { BiCrown, BiDollar } from "react-icons/bi";
 const Tag = ({ data }: any) => {
   const { id, type, bankName, accountNumber, name, phoneNumber, style } = data;
+  console.log(bankName);
   return (
     <a
       href={`/studio/${id}`}
       className="flex h-72 w-72 flex-col items-center justify-center gap-2 rounded-xl py-2"
     >
       <span className="relative flex h-5/6 w-5/6 flex-col items-center justify-center gap-2 rounded bg-primary">
-        <p className="absolute left-2 top-2">{type}</p>
+        <p className="absolute left-2 top-2">
+          {type === "PREMIUM" ? (
+            <BiCrown />
+          ) : type === "PAID" ? (
+            <BiDollar />
+          ) : null}
+        </p>
 
         <img
           alt="bank"
