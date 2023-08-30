@@ -6,7 +6,7 @@ const Tag = ({ data }: any) => {
   return (
     <a
       href={`/studio/${id}`}
-      className="flex h-72 w-72 flex-col items-center justify-center gap-2 rounded-xl py-2"
+      className="flex flex-shrink-0 h-72 w-72 flex-col items-center justify-center gap-2 rounded-xl py-2"
     >
       <span
         className={`relative flex h-5/6 w-5/6 flex-col items-center justify-center gap-2 rounded-xl bg-${bg}`}

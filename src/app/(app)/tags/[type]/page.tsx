@@ -15,7 +15,7 @@ const page = async ({ params }: { params: { type: string } }) => {
     .catch(() => null);
 
   return (
-    <div className="flex min-h-screen w-full items-center justify-center">
+    <div className="flex min-h-screen w-full items-center justify-center flex-wrap">
       {tags
         ? tags?.map((tag: any, id: any) => <Tag key={id} data={tag} />)
         : "No Tags Found"}

@@ -20,6 +20,7 @@ export default function RootLayout({
         <section className="w-11/12 h-max min-h-screen bg-secondary-content flex flex-col justify-start items-center rounded-2xl bg-opacity-10 ">
           {children}
         </section>
+        {/* <div className="w-screen h-10 bg-red-900 absolute top-[90vh]"></div> */}
         <Footer />
 
         <Analytics />
