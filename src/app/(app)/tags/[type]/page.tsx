@@ -14,12 +14,16 @@ const page = async ({ params }: { params: { type: string } }) => {
     })
     .catch(() => null);
 
-  return (
-    <div className="flex min-h-screen w-full items-center justify-center flex-wrap">
-      {tags
-        ? tags?.map((tag: any, id: any) => <Tag key={id} data={tag} />)
-        : "No Tags Found"}
-    </div>
-  );
+  if (tags) {
+    return (
+      <div className="flex min-h-screen w-full items-start justify-center flex-wrap">
+        {tags?.map((tag: any, id: any) => (
+          <Tag key={id} data={tag} />
+        ))}
+      </div>
+    );
+  } else {
+    <h1>No Tags Found</h1>;
+  }
 };
 export default page;
