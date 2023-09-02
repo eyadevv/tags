@@ -1,8 +1,5 @@
-
 const page = () => {
-    return (
-      <div>studio</div>
-    )
-  }
-  
-  export default page
+  return <div>studio</div>;
+};
+
+export default page;
