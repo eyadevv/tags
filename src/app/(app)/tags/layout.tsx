@@ -1,3 +1,4 @@
+import Pagination from "@/src/components/Pagination/Pagination";
 import "@/style/global.css";
 import Link from "next/link";
 export default function TagsLayout({

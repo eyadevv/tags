@@ -3,7 +3,7 @@ import { MdMenu } from "react-icons/md";
 
 const Nav = () => {
   return (
-    <nav className="w-full px-[6%] py-4 h-max min-h-[10vh] flex-shrink-0 flex flex-row-reverse justify-between z-10 items-center bg-black">
+    <nav className=" w-full px-[6%] py-4 h-max min-h-[10vh] flex-shrink-0 flex flex-row-reverse justify-between z-10 items-center bg-black">
       <Link href="/tags/free">
         <h2 className="text-5xl font-bold">تاغز</h2>
       </Link>

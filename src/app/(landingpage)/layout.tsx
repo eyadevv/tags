@@ -13,7 +13,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
+      <body className="w-screen overflow-x-clip ">
         <main>{children}</main>
         <Footer />
       </body>

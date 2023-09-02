@@ -7,7 +7,7 @@ import {
 } from "react-icons/ai";
 const MobileMenu = () => {
   return (
-    <ul className="flex-row-reverse h-[8vh] w-11/12 gap-4 justify-between items-center hidden xs:flex">
+    <ul className="flex-row-reverse h-[8vh] w-full bg-black px-[6%] gap-4 justify-between items-center hidden xs:flex ">
       <Item
         content="الرئيسية"
         url="/tags/free"

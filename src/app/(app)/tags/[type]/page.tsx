@@ -8,6 +8,7 @@ const page = async ({ params }: { params: { type: string } }) => {
       where: {
         type: type as TAGSTYPE,
       },
+      take: 20,
     })
     .then((res: any) => {
       return res?.length > 0 ? res : null;
@@ -16,7 +17,7 @@ const page = async ({ params }: { params: { type: string } }) => {
 
   if (tags) {
     return (
-      <div className="flex min-h-screen w-full items-start justify-center flex-wrap">
+      <div className=" flex min-h-screen w-full items-start justify-center flex-wrap">
         {tags?.map((tag: any, id: any) => (
           <Tag key={id} data={tag} />
         ))}
