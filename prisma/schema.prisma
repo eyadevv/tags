@@ -20,7 +20,7 @@ model user {
   name          String
   avatar        String
   email         String?
-  accountNumber Int
+  accountNumber Int?
   type          USERTYPE
   createdTags   tag[]    @relation("created")
   usedTags      tag[]    @relation("used")
@@ -36,6 +36,7 @@ enum TAGSTYPE {
 
 model tag {
   id          Int      @unique @default(autoincrement())
+  slug        String   @id @unique
   type        TAGSTYPE
   bank        String
   account     String

@@ -5,7 +5,6 @@ export async function GET(
   Req: Request,
   params: { params: { id: number | string } }
 ) {
-  //   console.log(params);
   const id = params.params.id;
   try {
     const tag = await PRISMA.tag
@@ -15,13 +14,14 @@ export async function GET(
         },
       })
       .then((res) => res)
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        throw new Error(err);
+      });
 
     return NextResponse.json({
       tag,
     });
   } catch (err) {
-    console.log(err);
     return NextResponse.json({
       msg: "There was an error",
     });

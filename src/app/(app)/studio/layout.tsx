@@ -3,6 +3,7 @@ import Nav from "@/src/components/Studio/Nav";
 import "@/style/global.css";
 export default function StudioLayout({
   children,
+  params,
 }: {
   children: React.ReactNode;
 }) {
