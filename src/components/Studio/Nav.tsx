@@ -1,9 +1,11 @@
 "use client";
 import Link from "next/link";
+import { useSelectedLayoutSegments } from "next/navigation";
 import { MdEdit, MdShare, MdFormatPaint } from "react-icons/md";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { useState } from "react";
-const Nav = ({ id }: { id: number | string }) => {
+const Nav = () => {
+  const segment = useSelectedLayoutSegments()[1];
   const [visible, setvisible] = useState(true);
 
   return (
@@ -30,19 +32,19 @@ const Nav = ({ id }: { id: number | string }) => {
         <Item
           icon={<MdEdit size={30} />}
           content="المحتوى"
-          url={`/studio/${id}`}
+          url={`/studio/content/${segment}`}
         />
         <hr className="h-[1px] w-full bg-white" />
 
         <Item
           icon={<MdFormatPaint size={30} />}
           content="التصميم"
-          url={`/studio/design/${id}`}
+          url={`/studio/design/${segment}`}
         />
         <hr className="h-[1px] w-full bg-white" />
         <Item
           content="مشاركة"
-          url={`/studio/share/${id}`}
+          url={`/studio/share/${segment}`}
           icon={<MdShare size={30} />}
         />
       </ul>

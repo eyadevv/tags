@@ -17,7 +17,7 @@ const page = async ({ params }: { params: { type: string } }) => {
 
   if (tags) {
     return (
-      <div className=" flex min-h-screen w-full items-start justify-center flex-wrap">
+      <div className=" flex min-h-screen w-full items-start justify-center flex-wrap xs:flex-col xs:justify-start xs:items-center gap-2">
         {tags?.map((tag: any, id: any) => (
           <Tag key={id} data={tag} />
         ))}
