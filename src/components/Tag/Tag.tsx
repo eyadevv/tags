@@ -1,13 +1,22 @@
+"use client";
+import FetchTag from "@/src/app/(app)/studio/FetchTag";
 import { BiSolidCrown, BiDollar } from "react-icons/bi";
-const Tag = ({ data }: any) => {
-  const { id, type, bank, account, name, phone, style } = data;
-  const { bg, bank: bankstyle, font, text, icons, barcode } = style;
+import { useEffect, useLayoutEffect, useState, useTransition } from "react";
+const Tag = () => {
+  let [isPending, startTransition] = useTransition();
+  const [data, setdata] = useState("");
+
+  useLayoutEffect(() => {
+    startTransition(async () => {
+      const data = await FetchTag();
+      setdata(data);
+    });
+  }, []);
+  const { id, type, bank, account, name, phone, style }: any = data;
+  // const { bg, bank: bankstyle, font, text, icons, barcode } = style;
 
   return (
-    <a
-      href={`/studio/${id}`}
-      className="flex  flex-shrink-0 h-72 w-72 flex-col items-center justify-center gap-2 rounded-xl py-2"
-    >
+    <div className="flex  flex-shrink-0 h-72 w-72 flex-col items-center justify-center gap-2 rounded-xl py-2">
       <span
         className={`relatve bg-gradient-to-bl to-accent from-primary flex h-5/6 w-5/6 flex-col items-center justify-center gap-2 rounded-xl`}
       >
@@ -31,7 +40,7 @@ const Tag = ({ data }: any) => {
         <p className="text-base font-bold">{name}</p>
         <p className="text-sm">{phone}</p>
       </span>
-    </a>
+    </div>
   );
 };
 export default Tag;

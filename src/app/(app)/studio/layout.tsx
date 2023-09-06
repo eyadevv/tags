@@ -1,5 +1,6 @@
 import Nav from "@/src/components/Studio/Nav";
 import "@/style/global.css";
+import Preview from "@/src/components/Studio/Preview";
 export default function StudioLayout({
   children,
 }: {
@@ -7,7 +8,7 @@ export default function StudioLayout({
 }) {
   return (
     <main className="w-full h-max min-h-screen  flex  flex-col justify-start items-center overflow-auto ">
-      <section className="">{children}</section>
+      <Preview>{children}</Preview>
       <Nav />
     </main>
   );
