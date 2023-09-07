@@ -9,16 +9,22 @@ import { useSelectedLayoutSegments } from "next/navigation";
 const Preview = ({ children }: { children: ReactNode }) => {
   let [isPending, startTransition] = useTransition();
   const segment = useSelectedLayoutSegments()[1];
+  const [loaded, setloaded] = useState(false);
 
   useEffect(() => {
-    return startTransition(async () => {
-      const data: any = await FetchTag(Number(segment));
-      dispatch({
-        type: "load",
-        data: data,
+    if (loaded === true) {
+      return startTransition(async () => {
+        const data: any = await FetchTag(Number(segment));
+        dispatch({
+          type: "load",
+          data: data,
+        });
+        setloaded(true);
       });
-    });
-  });
+    } else {
+      null;
+    }
+  }, [loaded]);
 
   function reducer(state: any, action: any) {
     const data = action.data;
