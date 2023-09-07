@@ -27,7 +27,7 @@ const data: any = [
     type: "FREE",
     creatorName: "eyad faisal",
     style: {
-      bg: "bg-pink-900",
+      bg: "#22c55e",
       bank: "full",
       text: "white",
       font: "mono",
@@ -44,7 +44,7 @@ const data: any = [
     type: "PAID",
     creatorName: "eyad faisal",
     style: {
-      bg: "bg-gradient-to-bl from-cyan-900 via-red-600 to-black",
+      bg: "#84cc16",
       bank: "full",
       text: "white",
       font: "mono",
@@ -61,7 +61,7 @@ const data: any = [
     type: "PREMIUM",
     creatorName: "eyad faisal",
     style: {
-      bg: "bg-blue-900",
+      bg: "#2563eb",
       bank: "full",
       text: "white",
       font: "mono",
@@ -78,7 +78,7 @@ const data: any = [
     type: "FREE",
     creatorName: "eyad faisal",
     style: {
-      bg: "bg-red-900",
+      bg: "#818cf8",
       bank: "full",
       text: "white",
       font: "mono",
@@ -95,7 +95,7 @@ const data: any = [
     type: "PAID",
     creatorName: "eyad faisal",
     style: {
-      bg: "bg-gradient-to-br from-purple-900 to-pink-600",
+      bg: "#4a044e",
       bank: "full",
       text: "white",
       font: "mono",
@@ -112,7 +112,7 @@ const data: any = [
     type: "PAID",
     creatorName: "eyad faisal",
     style: {
-      bg: "bg-gradient-to-br from-red-900 via-white to-black",
+      bg: "#f472b6",
       bank: "full",
       text: "white",
       font: "mono",

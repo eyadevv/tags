@@ -1,14 +1,14 @@
 "use server";
 import PRISMA from "@/lib/prisma";
-export default async function FetchTag() {
+export default async function FetchTag(id: number) {
   const tag = await PRISMA.tag
     .findUnique({
       where: {
-        id: 1,
+        id,
       },
     })
     .then((res) => res)
-    .catch((err) => null);
+    .catch(() => null);
 
   return tag;
 }
