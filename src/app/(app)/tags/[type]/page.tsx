@@ -26,10 +26,12 @@ const page = async ({ params }: { params: { type: string } }) => {
             className="w-56  h-56 flex-shrink-0"
             href={`/studio/content/${tag.id}`}
           >
-            <img
-              className="w-full h-full object-cover"
+            <Image
+              width={224}
+              height={224}
               src={`/${tag.slug}.png`}
               alt={tag.slug}
+              loading="eager"
             />
           </a>
           // <Tag data={tag} key={id} />
