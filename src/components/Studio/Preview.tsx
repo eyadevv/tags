@@ -9,20 +9,19 @@ import { useSelectedLayoutSegments } from "next/navigation";
 const Preview = ({ children }: { children: ReactNode }) => {
   let [isPending, startTransition] = useTransition();
   const segment = useSelectedLayoutSegments()[1];
-  const [data, setdata] = useState(null);
 
   useEffect(() => {
     return startTransition(async () => {
       const data: any = await FetchTag(Number(segment));
-      console.log(data);
-      setdata(data);
       dispatch({
         type: "load",
+        data: data,
       });
     });
   }, []);
 
   function reducer(state: any, action: any) {
+    const data = action.data;
     switch (action.type) {
       case "load":
         return {
@@ -64,7 +63,7 @@ const Preview = ({ children }: { children: ReactNode }) => {
 
   return (
     <section className="w-full h-max justify-start items-center">
-      {data ? (
+      {state?.id ? (
         <div className="w-full h-full flex flex-row xs:flex-col justify-around xs:justify-center items-center">
           <div className=" flex justify-center items-center">
             <Tag
