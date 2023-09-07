@@ -27,8 +27,9 @@ const page = async ({ params }: { params: { type: string } }) => {
             href={`/studio/content/${tag.id}`}
           >
             <Image
-              width={224}
-              height={224}
+              width={999}
+              height={999}
+              className="w-full h-full"
               src={`/${tag.slug}.png`}
               alt={tag.slug}
               loading="eager"
