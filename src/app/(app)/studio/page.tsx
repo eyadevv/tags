@@ -1,5 +1,4 @@
-const page = ({ params }) => {
-  return <div>STUDIO {JSON.stringify(params)}</div>;
+const page = () => {
+  return <div>Studio</div>;
 };
-
 export default page;

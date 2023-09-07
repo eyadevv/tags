@@ -22,6 +22,7 @@ const page = async ({ params }: { params: { type: string } }) => {
         {tags?.map((tag: any, id: any) => (
           // <>
           <a
+            key={id}
             className="w-56  h-56 flex-shrink-0"
             href={`/studio/content/${tag.id}`}
           >
@@ -29,7 +30,6 @@ const page = async ({ params }: { params: { type: string } }) => {
               className="w-full h-full object-cover"
               src={`/${tag.slug}.png`}
               alt={tag.slug}
-              key={id}
             />
           </a>
           // <Tag data={tag} key={id} />

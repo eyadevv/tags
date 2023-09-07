@@ -18,7 +18,7 @@ const Preview = ({ children }: { children: ReactNode }) => {
         data: data,
       });
     });
-  }, []);
+  });
 
   function reducer(state: any, action: any) {
     const data = action.data;

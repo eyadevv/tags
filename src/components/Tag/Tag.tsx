@@ -16,7 +16,7 @@ const Tag = ({
   text,
   icons,
   barcode,
-}) => {
+}: any) => {
   const tagRef = useRef(null);
   console.log(bg, phone, id);
 
