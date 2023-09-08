@@ -24,7 +24,7 @@ const page = async ({ params }: { params: { type: string } }) => {
           <a
             key={id}
             className="w-56  h-56 flex-shrink-0"
-            href={`/studio/content/${tag.id}`}
+            href={`/studio/${tag.id}`}
           >
             <Image
               width={999}

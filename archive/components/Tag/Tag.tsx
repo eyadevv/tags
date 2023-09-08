@@ -10,8 +10,8 @@ const Tag = ({ data }: any) => {
         <img
           alt="bank"
           src={`/${bankName}.png`}
-          width={50}
-          height={50}
+          width={720}
+          height={1080}
           className="h-20 w-20 rounded-full bg-white bg-opacity-10"
         />
 

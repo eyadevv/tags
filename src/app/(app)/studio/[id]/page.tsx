@@ -1,33 +1,36 @@
 "use client";
+import { useTransition, useEffect, useState, useReducer } from "react";
+import FetchTag from "../FetchTag";
 import Tag from "@/src/components/Tag/Tag";
-import FetchTag from "@/src/app/(app)/studio/FetchTag";
-
-import { ReactNode, useEffect, useReducer } from "react";
-import { useTransition, useState, useLayoutEffect } from "react";
-import { useSelectedLayoutSegments } from "next/navigation";
-
-const Preview = ({ children }: { children: ReactNode }) => {
-  let [isPending, startTransition] = useTransition();
-  const segment = useSelectedLayoutSegments()[1];
-  const [loaded, setloaded] = useState(false);
+import Studio from "@/src/components/Studio/Studio";
+import { BiLoader } from "react-icons/bi";
+const Page = ({ params }: { params: { id: string } }) => {
+  const [isPending, startTransition] = useTransition();
+  const { id } = params;
 
   useEffect(() => {
-    if (loaded === false) {
+    if (!localStorage.getItem(id)) {
+      console.log(Math.random());
       return startTransition(async () => {
-        const data: any = await FetchTag(Number(segment));
+        const tag: any = await FetchTag(Number(id));
         dispatch({
           type: "load",
-          data: data,
+          data: tag,
         });
-        setloaded(true);
+        localStorage.setItem(id, JSON.stringify(tag));
       });
     } else {
-      null;
+      dispatch({
+        type: "load",
+        data: JSON.parse(localStorage?.getItem(id) as string),
+      });
     }
-  }, [loaded]);
+  }, [id]);
 
   function reducer(state: any, action: any) {
     const data = action.data;
+    let target = action.key;
+    const value = action.value;
     switch (action.type) {
       case "load":
         return {
@@ -46,8 +49,14 @@ const Preview = ({ children }: { children: ReactNode }) => {
           icons: data?.style.icons,
           barcode: data?.style.barcode,
         };
+      case "update":
+        return {
+          ...state,
+          [target]: value,
+        };
+
       default:
-        return state;
+        return { ...state };
     }
   }
 
@@ -68,10 +77,10 @@ const Preview = ({ children }: { children: ReactNode }) => {
   });
 
   return (
-    <section className="w-full h-max justify-start items-center">
-      {state?.id ? (
-        <div className="w-full h-full flex flex-row xs:flex-col justify-around xs:justify-center items-center">
-          <div className=" flex justify-center items-center">
+    <div className=" relative w-full min-h-screen h-max flex flex-col justify-start items-center">
+      {state.id ? (
+        <div className="w-11/12 h-max flex  flex-row justify-between items-start xs:flex-col xs:items-center">
+          <div className="flex justify-center items-center w-[50vw]">
             <Tag
               slug={state?.slug}
               id={state?.id}
@@ -88,11 +97,20 @@ const Preview = ({ children }: { children: ReactNode }) => {
               barcode={state?.barcode}
             />
           </div>
-          {/* {JSON.stringify(isPending)} */}
-          {children}
+
+          <div className="w-[50vw] xs:w-full flex justify-center  ">
+            <Studio
+              dispatch={dispatch}
+              bg={state.bg}
+              name={state.name}
+              account={state.account}
+              bank={state.bank}
+              phone={state.phone}
+            />
+          </div>
         </div>
       ) : null}
-    </section>
+    </div>
   );
 };
-export default Preview;
+export default Page;
