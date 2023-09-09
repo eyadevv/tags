@@ -43,7 +43,7 @@ const Tag = ({
   };
 
   return (
-    <div className="flex flex-col justify-center items-center gap-2 ">
+    <div className="flex flex-col justify-center items-center gap-2 sm:flex-row-reverse ">
       <span
         className={` relative flex h-56 w-56 flex-shrink-0 flex-col items-center p-4 justify-center gap-2 rounded overflow-clip`}
         ref={tagRef}
@@ -74,10 +74,10 @@ const Tag = ({
       </span>
       <button
         onClick={() => download(tagRef.current)}
-        className="bg-black py-4 px-4 text-white rounded-full flex flex-row justify-center items-center gap-2"
+        className="bg-black p-3 sm:p-1 text-white rounded-full flex flex-row justify-center items-center gap-2"
       >
-        <BiDownload size={30} />
-        Download
+        <BiDownload className="sm:w-6 sm:h-6 w-10 h-10" />
+        <p className="sm:hidden">Download</p>
       </button>
     </div>
   );

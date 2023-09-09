@@ -1,5 +1,7 @@
 "use client";
-
+import Input from "./Input";
+import Select from "./Select";
+import Bgpicker from "./Bgpicker";
 import { useEffect, useState } from "react";
 
 const Studio = ({
@@ -20,8 +22,9 @@ const Studio = ({
   const [accountHint, setaccountHint]: any[] = useState(null);
   const [phoneHint, setphoneHint]: any[] = useState(null);
   const [bgStyle, setbgStyle] = useState("simple");
+
   return (
-    <div dir="rtl" className="flex flex-col gap-2">
+    <div dir="rtl" className="flex flex-col gap-2 w-full items-center">
       <Select
         header="إختر البنك"
         options={["bankak", "ocash", "fawry"]}
@@ -86,144 +89,19 @@ const Studio = ({
         lable="رقم الهاتف"
         placeholder="+249"
       />
-      {
-        //////////////// BackGround
-      }
-
-      <div className="flex flex-col justify-center items-start gap-3">
-        <p className="label-text">الخفلية</p>
-        <div className="flex flex-row gap-2 ">
-          <div className="flex flex-row gap-2">
-            <div className="w-max h-max flex flex-col gap-2">
-              <p className="label-text-alt">Simple</p>
-              <input
-                className="w-20 h-10 rounded-lg"
-                type="color"
-                name="color"
-                onChange={(e) => {
-                  dispatch({
-                    type: "update",
-                    key: "bg",
-                    value: e.target.value,
-                  });
-                }}
-              />
-            </div>
-          </div>
-          <div className="flex flex-row gap-2">
-            <div className="w-max h-max flex flex-col gap-2">
-              <p className="label-text-alt">Gradient</p>
-              <div
-                className={`w-20  bg-gradient-to-br from-primary to-secondary h-10 rounded-lg`}
-              ></div>
-            </div>
-          </div>
-          <div className="flex flex-row gap-2 ">
-            <div className="w-max h-max flex flex-col gap-2">
-              <p className="label-text-alt">Skin</p>
-              <div className="flex relative w-20 h-10 overflow-clip">
-                <img
-                  src="/fancycake.png"
-                  width="80px"
-                  height="40px"
-                  className="absolute"
-                  alt="skin"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      {/* 
-      {bgStyle === "simple" ? (
-        <input
-          type="color"
-          name="color"
-          onChange={(e) => {
-            dispatch({
-              type: "update",
-              key: "bg",
-              value: e.target.value,
-            });
-          }}
-        />
-      ) : null} */}
+      <Bgpicker
+        setbgStyle={setbgStyle}
+        bgStyle={bgStyle}
+        onChange={(e) =>
+          dispatch({
+            type: "update",
+            taget: "style",
+            key: "bg",
+            value: e.target.value,
+          })
+        }
+      />
     </div>
   );
 };
 export default Studio;
-
-const Input = ({
-  lable,
-  placeholder,
-  onChange,
-  value,
-  hint,
-}: {
-  lable: string;
-  placeholder: string;
-  onChange: Function;
-  value: string;
-  hint?: string;
-}) => {
-  return (
-    <div className="form-control w-full max-w-xs  ">
-      <label className="label">
-        <span className="label-text">{lable}</span>
-        <span className="label-text-alt text-red-200">{hint}</span>
-      </label>
-      <input
-        type="text"
-        placeholder={placeholder}
-        className={`input ${
-          hint ? "border-error" : null
-        } input-bordered w-full max-w-xs`}
-        onChange={(e) => onChange(e)}
-        value={value}
-      />
-      {/* <label className="label">
-        <span className="label-text-alt">Bottom Left label</span>
-        <span className="label-text-alt">Bottom Right label</span>
-      </label> */}
-    </div>
-  );
-};
-
-const Select = ({
-  options,
-  header,
-  placeholder,
-  onChange,
-  value,
-}: {
-  options: string[];
-  header: React.ReactNode;
-  placeholder: string;
-  onChange: Function;
-  value: string;
-}) => {
-  return (
-    <div className="form-control w-full max-w-xs">
-      <label className="label">
-        <span className="label-text">{header}</span>
-        {/* <span className="label-text-alt">Alt label</span> */}
-      </label>
-      <select
-        value={value}
-        onChange={(e) => onChange(e)}
-        className="select select-bordered"
-      >
-        <option disabled selected>
-          {placeholder}
-        </option>
-        {options.map((option, id) => {
-          return <option key={id}>{option}</option>;
-        })}
-      </select>
-      {/* <label className="label">
-        <span className="label-text-alt">Alt label</span>
-        <span className="label-text-alt">Alt label</span>
-      </label> */}
-    </div>
-  );
-};

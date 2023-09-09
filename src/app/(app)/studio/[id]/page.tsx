@@ -3,14 +3,12 @@ import { useTransition, useEffect, useState, useReducer } from "react";
 import FetchTag from "../FetchTag";
 import Tag from "@/src/components/Tag/Tag";
 import Studio from "@/src/components/Studio/Studio";
-import { BiLoader } from "react-icons/bi";
 const Page = ({ params }: { params: { id: string } }) => {
   const [isPending, startTransition] = useTransition();
   const { id } = params;
 
   useEffect(() => {
     if (!localStorage.getItem(id)) {
-      console.log(Math.random());
       return startTransition(async () => {
         const tag: any = await FetchTag(Number(id));
         dispatch({
@@ -28,32 +26,47 @@ const Page = ({ params }: { params: { id: string } }) => {
   }, [id]);
 
   function reducer(state: any, action: any) {
-    const data = action.data;
-    let target = action.key;
+    const data = action?.data;
+    let key = action?.key;
+    let target = action?.target;
     const value = action.value;
     switch (action.type) {
       case "load":
         return {
           ...state,
-          slug: data?.slug,
-          id: data?.id,
-          type: data?.type,
-          bank: data?.bank,
-          account: data?.account,
-          name: data?.name,
-          phone: data?.phone,
-          bg: data?.style.bg,
-          bankstyle: data?.style.bankstyle,
-          font: data?.style.font,
-          text: data?.style.text,
-          icons: data?.style.icons,
-          barcode: data?.style.barcode,
+          ...data,
         };
       case "update":
-        return {
-          ...state,
-          [target]: value,
-        };
+        if (target) {
+          localStorage.setItem(
+            id,
+            JSON.stringify({
+              ...state,
+              [target]: {
+                [key]: value,
+              },
+            })
+          );
+          return {
+            ...state,
+            [target]: {
+              [key]: value,
+            },
+          };
+        } else {
+          localStorage.setItem(
+            id,
+            JSON.stringify({
+              ...state,
+              [key]: value,
+            })
+          );
+
+          return {
+            ...state,
+            [key]: value,
+          };
+        }
 
       default:
         return { ...state };
@@ -68,19 +81,21 @@ const Page = ({ params }: { params: { id: string } }) => {
     account: null,
     name: null,
     phone: null,
-    bg: null,
-    bankstyle: null,
-    font: null,
-    text: null,
-    icons: null,
-    barcode: null,
+    style: {
+      bg: null,
+      bankstyle: null,
+      font: null,
+      text: null,
+      icons: null,
+      barcode: null,
+    },
   });
 
   return (
-    <div className=" relative w-full min-h-screen h-max flex flex-col justify-start items-center">
+    <div className="w-full h-full flex justify-center items-start overflow-clip  ">
       {state.id ? (
-        <div className="w-11/12 h-max flex  flex-row justify-between items-start xs:flex-col xs:items-center">
-          <div className="flex justify-center items-center w-[50vw]">
+        <div className="w-full h-full flex flex-row  justify-between items-start sm:flex-col sm:items-center   ">
+          <div className="flex  justify-center overflow-clip flex-shrink  items-center h-full w-1/3 sm:h-[25vh] sm:w-max ">
             <Tag
               slug={state?.slug}
               id={state?.id}
@@ -89,16 +104,16 @@ const Page = ({ params }: { params: { id: string } }) => {
               account={state?.account}
               name={state?.name}
               phone={state?.phone}
-              bg={state?.bg}
-              bankstyle={state?.bankstyle}
-              font={state?.font}
-              text={state?.text}
-              icons={state?.icons}
-              barcode={state?.barcode}
+              bg={state.style?.bg}
+              bankstyle={state.style?.bankstyle}
+              font={state.style?.font}
+              text={state.style?.text}
+              icons={state.style?.icons}
+              barcode={state.style?.barcode}
             />
           </div>
 
-          <div className="w-[50vw] xs:w-full flex justify-center  ">
+          <div className="w-2/3 flex justify-center flex-shrink-0 h-full p-4 overflow-auto sm:w-full sm:h-[50vh] overflow-x-clip ">
             <Studio
               dispatch={dispatch}
               bg={state.bg}
