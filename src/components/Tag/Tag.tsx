@@ -38,7 +38,7 @@ const Tag = ({
         link.click();
       })
       .catch((err) => {
-        alert("There was an error");
+        alert(err);
       });
   };
 

@@ -103,11 +103,11 @@ const Studio = ({
       <Bgpicker
         setbgStyle={setbgStyle}
         bgStyle={bgStyle}
-        onChange={(e) =>
+        onChange={(e: any) =>
           dispatch({
             type: "update",
             key: "bg",
-            value: e.target.value,
+            value: e.target?.value,
           })
         }
       />
