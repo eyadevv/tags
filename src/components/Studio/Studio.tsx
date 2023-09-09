@@ -24,7 +24,7 @@ const Studio = ({
   const [bgStyle, setbgStyle] = useState("simple");
 
   return (
-    <div dir="rtl" className="flex flex-col gap-2 w-full items-center">
+    <div dir="rtl" className="flex flex-col gap-2 w-full items-start p-10">
       <Select
         header="إختر البنك"
         options={["bankak", "ocash", "fawry"]}
@@ -89,13 +89,23 @@ const Studio = ({
         lable="رقم الهاتف"
         placeholder="+249"
       />
+      <span className="flex flex-row gap-2 justify-center items-center">
+        <label htmlFor="checkbox">
+          <p>إحفظ معلوماتي</p>
+        </label>
+        <input
+          dir={undefined}
+          type="checkbox"
+          className="checkbox checkbox-primary  w-4 h-4 "
+          name="checkbox"
+        />
+      </span>
       <Bgpicker
         setbgStyle={setbgStyle}
         bgStyle={bgStyle}
         onChange={(e) =>
           dispatch({
             type: "update",
-            taget: "style",
             key: "bg",
             value: e.target.value,
           })

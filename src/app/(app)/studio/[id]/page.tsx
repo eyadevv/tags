@@ -28,8 +28,7 @@ const Page = ({ params }: { params: { id: string } }) => {
   function reducer(state: any, action: any) {
     const data = action?.data;
     let key = action?.key;
-    let target = action?.target;
-    const value = action.value;
+    const value = action?.value;
     switch (action.type) {
       case "load":
         return {
@@ -37,36 +36,18 @@ const Page = ({ params }: { params: { id: string } }) => {
           ...data,
         };
       case "update":
-        if (target) {
-          localStorage.setItem(
-            id,
-            JSON.stringify({
-              ...state,
-              [target]: {
-                [key]: value,
-              },
-            })
-          );
-          return {
-            ...state,
-            [target]: {
-              [key]: value,
-            },
-          };
-        } else {
-          localStorage.setItem(
-            id,
-            JSON.stringify({
-              ...state,
-              [key]: value,
-            })
-          );
-
-          return {
+        localStorage.setItem(
+          id,
+          JSON.stringify({
             ...state,
             [key]: value,
-          };
-        }
+          })
+        );
+
+        return {
+          ...state,
+          [key]: value,
+        };
 
       default:
         return { ...state };
@@ -81,14 +62,12 @@ const Page = ({ params }: { params: { id: string } }) => {
     account: null,
     name: null,
     phone: null,
-    style: {
-      bg: null,
-      bankstyle: null,
-      font: null,
-      text: null,
-      icons: null,
-      barcode: null,
-    },
+    bg: null,
+    bankStyle: null,
+    font: null,
+    text: null,
+    icons: null,
+    barcode: null,
   });
 
   return (
@@ -104,12 +83,12 @@ const Page = ({ params }: { params: { id: string } }) => {
               account={state?.account}
               name={state?.name}
               phone={state?.phone}
-              bg={state.style?.bg}
-              bankstyle={state.style?.bankstyle}
-              font={state.style?.font}
-              text={state.style?.text}
-              icons={state.style?.icons}
-              barcode={state.style?.barcode}
+              bg={state.bg}
+              bankStyle={state.bankStyle}
+              font={state.font}
+              text={state.text}
+              icons={state.icons}
+              barcode={state.barcode}
             />
           </div>
 
