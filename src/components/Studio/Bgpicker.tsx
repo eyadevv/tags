@@ -76,7 +76,7 @@ const Bgpicker = ({
           solid={false}
           colorBoardHeight={200}
           popupWidth={""}
-          onChange={(e) => {
+          onChange={(e: string) => {
             dispatch({
               type: "update",
               key: "bg",
@@ -91,7 +91,7 @@ const Bgpicker = ({
           colorBoardHeight={200}
           popupWidth={""}
           gradient={false}
-          onChange={(e) => {
+          onChange={(e: string) => {
             dispatch({
               type: "update",
               key: "bg",

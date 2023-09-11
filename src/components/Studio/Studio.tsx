@@ -5,11 +5,11 @@ import Bgpicker from "./Bgpicker";
 import { useEffect, useState } from "react";
 import ReactGPicker from "react-gcolor-picker";
 import Radius from "./Radius";
-declare module "react-gcolor-picker" {
-  interface Props {
-    token: string;
-  }
-}
+// declare module "react-gcolor-picker" {
+//   interface Props {
+//     token: string;
+//   }
+// }
 const Studio = ({ dispatch, state }: { dispatch: Function; state: any }) => {
   const [accountHint, setaccountHint]: any[] = useState(null);
   const [phoneHint, setphoneHint]: any[] = useState(null);
