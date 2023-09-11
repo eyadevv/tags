@@ -1,5 +1,11 @@
 "use client";
-import { useTransition, useEffect, useState, useReducer } from "react";
+import {
+  useTransition,
+  useEffect,
+  useState,
+  useReducer,
+  useLayoutEffect,
+} from "react";
 import FetchTag from "@/src/app/actions/FetchTag";
 import Tag from "@/src/components/Tag/Tag";
 import Studio from "@/src/components/Studio/Studio";
@@ -8,17 +14,17 @@ const Page = ({ params }: { params: { id: string } }) => {
   const [tagData, settagData] = useState({});
   const { id } = params;
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!localStorage.getItem(id)) {
       return startTransition(async () => {
         const tag: any = await FetchTag(Number(id));
-        console.log(tag);
-        dispatch({
-          type: "load",
-          data: tag,
-        });
-        localStorage.setItem(id, JSON.stringify(tag));
-        settagData(() => tag);
+        if (tag !== null) {
+          dispatch({
+            type: "load",
+            data: tag,
+          });
+          settagData(() => tag);
+        }
       });
     } else {
       dispatch({
@@ -90,7 +96,9 @@ const Page = ({ params }: { params: { id: string } }) => {
             <Studio dispatch={dispatch} state={state} />
           </div>
         </div>
-      ) : null}
+      ) : (
+        "No Tag"
+      )}
     </div>
   );
 };
