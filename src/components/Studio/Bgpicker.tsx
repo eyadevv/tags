@@ -1,11 +1,13 @@
+import { useState } from "react";
+import ReactGPicker from "react-gcolor-picker";
 const Bgpicker = ({
-  setbgStyle,
+  dispatch,
   bgStyle,
-  onChange,
+  bg,
 }: {
-  setbgStyle: Function;
+  dispatch: Function;
   bgStyle: string;
-  onChange: Function;
+  bg: string;
 }) => {
   return (
     <div className="flex flex-col justify-center items-start gap-3 sm:w-full w-max h-max">
@@ -15,26 +17,31 @@ const Bgpicker = ({
           <div className="w-max h-max flex flex-col gap-2">
             <p className="label-text text-sm">Simple</p>
             <div
+              onClick={() =>
+                dispatch({
+                  type: "update",
+                  key: "bgStyle",
+                  value: "simple",
+                })
+              }
               className={`
                 w-32 
             ${bgStyle === "simple" ? "border-2" : "border-0"}
-            h-20 relative overflow-clip rounded-lg flex justify-center items-center`}
-            >
-              <input
-                className=" w-36 absolute h-24 rounded-lg "
-                type="color"
-                name="color"
-                onClick={() => setbgStyle("simple")}
-                onChange={(e) => onChange(e)}
-              />
-            </div>
+            h-20 bg-black rounded-lg flex justify-center items-center`}
+            ></div>
           </div>
         </div>
         <div className="flex flex-row gap-2">
           <div className="w-max h-max flex flex-col gap-2">
             <p className="label-text text-sm">Gradient</p>
             <div
-              onClick={() => setbgStyle("gradient")}
+              onClick={() =>
+                dispatch({
+                  type: "update",
+                  key: "bgStyle",
+                  value: "gradient",
+                })
+              }
               style={{}}
               className={`w-32 ${
                 bgStyle === "gradient" ? "border-2" : "border-0"
@@ -46,7 +53,7 @@ const Bgpicker = ({
           <div className="w-max h-max flex flex-col gap-2">
             <p className="label-text text-sm ">Skin</p>
             <div
-              onClick={() => setbgStyle("skin")}
+              onClick={() => dispatch("skin")}
               className={`${
                 bgStyle === "skin" ? "border-2" : "border-0"
               } flex relative w-32 h-20 overflow-clip rounded-lg`}
@@ -62,6 +69,39 @@ const Bgpicker = ({
           </div>
         </div>
       </div>
+      {bgStyle === "gradient" ? (
+        <ReactGPicker
+          value="red"
+          gradient={true}
+          solid={false}
+          colorBoardHeight={200}
+          popupWidth={""}
+          onChange={(e) => {
+            dispatch({
+              type: "update",
+              key: "bg",
+              value: e,
+            });
+          }}
+        />
+      ) : bgStyle === "simple" ? (
+        <ReactGPicker
+          value="red"
+          solid={true}
+          colorBoardHeight={200}
+          popupWidth={""}
+          gradient={false}
+          onChange={(e) => {
+            dispatch({
+              type: "update",
+              key: "bg",
+              value: e,
+            });
+          }}
+        />
+      ) : (
+        123
+      )}
     </div>
   );
 };

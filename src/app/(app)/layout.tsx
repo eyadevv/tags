@@ -9,11 +9,7 @@ export const metadata: Metadata = {
   description: "Payment Tags Made Easy",
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function TagLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body className="w-screen flex-shrink-0 h-screen bg-gradient-to-b from-primary to-black text-white flex flex-col justify-between items-center overflow-auto gap-0">

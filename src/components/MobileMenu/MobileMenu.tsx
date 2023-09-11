@@ -8,11 +8,7 @@ import {
 const MobileMenu = () => {
   return (
     <ul className="flex-row-reverse h-[8vh] w-full bg-black px-[6%] gap-4 justify-between items-center hidden xs:flex ">
-      <Item
-        content="الرئيسية"
-        url="/tags/free"
-        icon={<AiOutlineHome size={25} />}
-      />
+      <Item content="الرئيسية" url="/tags" icon={<AiOutlineHome size={25} />} />
       <Item
         content="الأستديو"
         url="/studio"
@@ -33,7 +29,7 @@ const Item = ({ content, url, icon }: any) => {
   return (
     <Link href={url} className="flex flex-col justify-center items-center">
       {icon}
-      <p className="text-lg">{content}</p>
+      <p className="text-sm">{content}</p>
     </Link>
   );
 };

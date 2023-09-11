@@ -3,28 +3,41 @@ import Input from "./Input";
 import Select from "./Select";
 import Bgpicker from "./Bgpicker";
 import { useEffect, useState } from "react";
+import ReactGPicker from "react-gcolor-picker";
+import * as React from "react";
+import * as SliderPrimitive from "@radix-ui/react-slider";
+import Radius from "./Radius";
+const Slider = React.forwardRef<
+  React.ElementRef<typeof SliderPrimitive.Root>,
+  React.ComponentPropsWithoutRef<typeof SliderPrimitive.Root>
+>(({ className, ...props }, ref) => (
+  <SliderPrimitive.Root
+    ref={ref}
+    className="relative flex w-full touch-none select-none items-center"
+    {...props}
+  >
+    <SliderPrimitive.Track className="relative h-1.5 w-full grow overflow-hidden rounded-full bg-primary/20">
+      <SliderPrimitive.Range className="absolute h-full bg-primary" />
+    </SliderPrimitive.Track>
+    <SliderPrimitive.Thumb className="block h-4 w-4 rounded-full border border-primary/50 bg-background shadow transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50" />
+  </SliderPrimitive.Root>
+));
+Slider.displayName = SliderPrimitive.Root.displayName;
 
-const Studio = ({
-  dispatch,
-  bg,
-  bank,
-  account,
-  name,
-  phone,
-}: {
-  dispatch: Function;
-  bg: string;
-  bank: string;
-  account: string;
-  name: string;
-  phone: string;
-}) => {
+export { Slider };
+
+const Studio = ({ dispatch, state }: { dispatch: Function; state: any }) => {
   const [accountHint, setaccountHint]: any[] = useState(null);
   const [phoneHint, setphoneHint]: any[] = useState(null);
-  const [bgStyle, setbgStyle] = useState("simple");
+
+  const { bg, bgStyle, bankRadius, tagRadius, phone, bank, name, account } =
+    state;
 
   return (
-    <div dir="rtl" className="flex flex-col gap-2 w-full items-start p-10">
+    <div
+      dir="rtl"
+      className=" flex flex-col gap-2 w-full h-max  items-start p-10 sm:p-0"
+    >
       <Select
         header="إختر البنك"
         options={["bankak", "ocash", "fawry"]}
@@ -45,7 +58,6 @@ const Studio = ({
           const acc = Number(e.target.value);
           if (String(acc) !== "NaN") {
             setaccountHint(null);
-
             dispatch({
               type: "update",
               key: "account",
@@ -89,7 +101,7 @@ const Studio = ({
         lable="رقم الهاتف"
         placeholder="+249"
       />
-      <span className="flex flex-row gap-2 justify-center items-center">
+      {/* <span className="flex flex-row gap-2 justify-center items-center">
         <label htmlFor="checkbox">
           <p>إحفظ معلوماتي</p>
         </label>
@@ -99,18 +111,10 @@ const Studio = ({
           className="checkbox checkbox-primary  w-4 h-4 "
           name="checkbox"
         />
-      </span>
-      <Bgpicker
-        setbgStyle={setbgStyle}
-        bgStyle={bgStyle}
-        onChange={(e: any) =>
-          dispatch({
-            type: "update",
-            key: "bg",
-            value: e.target?.value,
-          })
-        }
-      />
+      </span> */}
+      <Radius dispatch={dispatch} />
+
+      <Bgpicker bgStyle={state.bgStyle} bg={state.bg} dispatch={dispatch} />
     </div>
   );
 };

@@ -12,7 +12,7 @@ const Input = ({
   hint?: string;
 }) => {
   return (
-    <div className="form-control w-11/12 max-w-sm text-lg ">
+    <div className="form-control sm:w-full  w-1/2 text-lg ">
       <label className="label">
         <span className="">{lable}</span>
         <span className="label-text-alt text-red-200">{hint}</span>
@@ -22,7 +22,7 @@ const Input = ({
         placeholder={placeholder}
         className={`input ${
           hint ? "border-error" : null
-        } input-bordered w-full max-w-sm h-14`}
+        } input-bordered w-full h-14`}
         onChange={(e) => onChange(e)}
         value={value}
       />

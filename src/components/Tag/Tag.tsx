@@ -5,41 +5,58 @@ import {
   useLayoutEffect,
   useTransition,
   ReactNode,
+  useEffect,
 } from "react";
-import { BiSolidCrown, BiDollar, BiDownload } from "react-icons/bi";
+import PublishTag from "@/src/app/actions/PublishTag";
+import {
+  BiSolidCrown,
+  BiShare,
+  BiReset,
+  BiDollar,
+  BiDownload,
+} from "react-icons/bi";
 import { toPng } from "html-to-image";
-const Tag = ({
-  slug,
-  id,
-  type,
-  bank,
-  account,
-  name,
-  phone,
-  bg,
-  bankstyle,
-  font,
-  text,
-  icons,
-  barcode,
-}: any) => {
+const Tag = ({ state, dispatch }: any) => {
+  const {
+    id,
+    slug,
+    bg,
+    type,
+    bgStyle,
+    bank,
+    account,
+    name,
+    phone,
+    bankRadius,
+    tagRadius,
+  } = state;
   const tagRef = useRef(null);
+  const [isPending, startTransition] = useTransition();
 
-  const download = async (current: any) => {
-    toPng(current, {
-      cacheBust: true,
-      skipAutoScale: true,
-      quality: 1,
-    })
-      .then((dataUrl) => {
-        const link = document.createElement("a");
-        link.download = `${slug}.png`;
-        link.href = dataUrl;
-        link.click();
-      })
-      .catch((err) => {
-        alert(err);
+  const IMG = {
+    PNG: async (current: any) => {
+      return await toPng(current, {
+        cacheBust: true,
+        skipAutoScale: true,
+        quality: 1,
+        height: 300,
+        width: 300,
       });
+    },
+    Download: async () => {
+      const dataUrl = await IMG.PNG(tagRef.current);
+      const link = document.createElement("a");
+      link.download = `${slug}.png`;
+      link.href = dataUrl;
+      link.click();
+    },
+    Publish: async () => {
+      const dataUrl = await IMG.PNG(tagRef.current);
+      startTransition(async () => {
+        const status = await PublishTag(dataUrl);
+        alert(status);
+      });
+    },
   };
 
   return (
@@ -49,7 +66,7 @@ const Tag = ({
         ref={tagRef}
         style={{
           background: bg,
-          border: bankstyle,
+          borderRadius: tagRadius + "rem",
         }}
       >
         <p className="absolute left-2 top-2">
@@ -65,21 +82,58 @@ const Tag = ({
           src={`/${bank}.png`}
           width={720}
           height={1080}
-          className={`h-20 w-20 rounded-full bg-black bg-opacity-10`}
+          style={{
+            borderRadius: bankRadius + "rem",
+          }}
+          className={`h-20 w-20 bg-black bg-opacity-10`}
         />
 
         <p className="text-lg font-bold">{account}</p>
         <p className="text-base font-bold">{name}</p>
         <p className="text-sm">{phone}</p>
       </span>
-      <button
-        onClick={() => download(tagRef.current)}
-        className="bg-black p-3 sm:p-1 text-white rounded-full flex flex-row justify-center items-center gap-2"
-      >
-        <BiDownload className="sm:w-6 sm:h-6 w-10 h-10" />
-        <p className="sm:hidden">Download</p>
-      </button>
+      <div className="flex flex-row gap-2 justify-center items-center sm:flex-col">
+        <Button
+          title="Download"
+          icon={<BiDownload className="w-6 h-6" />}
+          onClick={() => IMG.Download()}
+        />
+        <Button
+          title="Reset"
+          icon={<BiReset className="w-6 h-6" />}
+          onClick={() =>
+            dispatch({
+              type: "reset",
+              key: id,
+            })
+          }
+        />
+        <Button
+          title="Publish"
+          icon={<BiShare className="w-6 h-6" />}
+          onClick={() => IMG.Publish()}
+        />
+      </div>
     </div>
+  );
+};
+const Button = ({
+  icon,
+  title,
+  onClick,
+}: {
+  icon: ReactNode;
+  title: string;
+  onClick: Function;
+}) => {
+  return (
+    <button
+      onClick={() => onClick()}
+      className="bg-black p-3 sm:p-1 text-white rounded-full flex flex-row justify-center items-center gap-2"
+    >
+      {icon}
+      <p className="sm:hidden">{title}</p>
+    </button>
   );
 };
 export default Tag;
