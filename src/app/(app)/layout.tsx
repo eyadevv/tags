@@ -14,11 +14,11 @@ export default function TagLayout({ children }: { children: React.ReactNode }) {
     <html lang="en">
       <body className="w-screen flex-shrink-0 h-screen bg-gradient-to-b from-primary to-black text-white flex flex-col justify-between items-center overflow-auto gap-0">
         <Nav />
-        <main className="w-screen flex-grow p-4 h-[80vh] flex flex-col justify-start items-center overflow-auto ">
-          <section className="w-full h-max bg-white bg-opacity-10  flex flex-col justify-start items-center rounded-2xl ">
-            {children}
-          </section>
-          <Footer />
+        <main className="w-screen flex-grow h-[80vh] flex flex-col justify-start items-center overflow-y-scroll overflow-x-clip ">
+          {/* <section className="w-full h-max bg-white bg-opacity-10  flex flex-col justify-start items-center rounded-2xl "> */}
+          {children}
+          {/* <Footer /> */}
+          {/* </section> */}
         </main>
         <MobileMenu />
 

@@ -3,7 +3,7 @@ generator client {
 }
 
 datasource db {
-  provider     = "mysql"
+  provider     = "postgresql"
   url          = env("DATABASE_URL")
   relationMode = "prisma"
 }
@@ -20,8 +20,8 @@ model user {
   email         String?
   accountNumber Int?
   type          USERTYPE
-  createdTags   tag[]    @relation("created")
-  usedTags      tag[]    @relation("used")
+  // createdTags   tag[]    @relation("created")
+  // usedTags      tag[]    @relation("used")
 
   @@unique([id, name])
 }
@@ -39,27 +39,27 @@ enum BGSTYLE {
 }
 
 model tag {
-  id          Int      @unique @default(autoincrement())
-  slug        String   @id @unique
-  type        TAGSTYPE @default(FREE)
-  bank        String   @default("bankak")
-  account     String   @default("247365")
-  name        String   @default("Your Name")
-  phone       String   @default("249xxxxxxxxx")
-  bg          String   @default("black")
-  bankRadius  String   @default("999")
-  tagRadius   String   @default("0")
-  text        String   @default("white")
-  font        String
-  icons       Boolean  @default(false)
-  barcode     Boolean  @default(false)
-  bgStyle     BGSTYLE  @default(SOLID)
-  user        user?    @relation(fields: [userId], references: [id], "created")
-  userId      String?
-  creator     user?    @relation(fields: [creatorId, creatorName], references: [id, name], "used")
-  creatorId   String?
-  creatorName String   @default("ORIGINAL")
+  id         Int      @id @unique @default(autoincrement())
+  type       TAGSTYPE @default(FREE)
+  bank       String   @default("bankak")
+  account    String   @default("247365")
+  name       String   @default("Your Name")
+  phone      String   @default("249xxxxxxxxx")
+  bg         String   @default("black")
+  bankRadius String   @default("999")
+  tagRadius  String   @default("0")
+  text       String   @default("white")
+  font       String   @default("open sans")
+  icons      Boolean  @default(false)
+  barcode    Boolean  @default(false)
+  bgStyle    BGSTYLE  @default(SOLID)
+  // user        user?    @relation(fields: [userId], references: [id], "created")
+  // userId      String?
+  // creator     user?    @relation(fields: [creatorId, creatorName], references: [id, name], "used")
+  // creatorId   String?
+  // creatorName String   @default("ORIGINAL")
 
-  @@index([creatorId, creatorName])
-  @@index([userId])
+  // @@index([creatorId, creatorName])
+  // @@index([userId])
+  @@unique([bg, bank])
 }

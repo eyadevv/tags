@@ -8,16 +8,14 @@ const page = async ({ params }: { params: { type: string } }) => {
     })
     .catch((err) => console.log(err));
 
-  if (tags) {
-    return (
-      <div className=" flex min-h-screen w-full items-start justify-center flex-wrap xs:flex-col xs:justify-start xs:items-center gap-2">
-        {tags?.map((tag: any, id: any) => (
-          <Preview data={tag} key={id} />
-        ))}
-      </div>
-    );
-  } else {
-    <h1>No Tags Found</h1>;
-  }
+  return (
+    <div className="h-max w-full flex flex-wrap justify-center items-start p-4 gap-2">
+      {tags ? (
+        tags?.map((tag: any, id: any) => <Preview data={tag} key={id} />)
+      ) : (
+        <h2 className="text-2xl font-bold">Failed to Load Tag !</h2>
+      )}
+    </div>
+  );
 };
 export default page;

@@ -1,27 +1,13 @@
 "use client";
-import {
-  useRef,
-  useState,
-  useLayoutEffect,
-  useTransition,
-  ReactNode,
-  useEffect,
-} from "react";
+import { useRef, useTransition, ReactNode } from "react";
 import PublishTag from "@/src/app/actions/PublishTag";
-import {
-  BiSolidCrown,
-  BiShare,
-  BiReset,
-  BiDollar,
-  BiDownload,
-} from "react-icons/bi";
+import { BiShare, BiReset, BiDownload } from "react-icons/bi";
 import { toPng } from "html-to-image";
 const Tag = ({ state, dispatch }: any) => {
   const {
     id,
     slug,
     bg,
-    type,
     bgStyle,
     bank,
     account,
@@ -51,9 +37,8 @@ const Tag = ({ state, dispatch }: any) => {
       link.click();
     },
     Publish: async () => {
-      const dataUrl = await IMG.PNG(tagRef.current);
       startTransition(async () => {
-        const status = await PublishTag(dataUrl);
+        const status = await PublishTag(state);
         alert(status);
       });
     },
@@ -69,14 +54,6 @@ const Tag = ({ state, dispatch }: any) => {
           borderRadius: tagRadius + "rem",
         }}
       >
-        <p className="absolute left-2 top-2">
-          {type === "PREMIUM" ? (
-            <BiSolidCrown color="gold" size={25} />
-          ) : type === "PAID" ? (
-            <BiDollar color="gold" size={25} />
-          ) : null}
-        </p>
-
         <img
           alt={bank || "bank"}
           src={`/${bank}.png`}

@@ -7,7 +7,7 @@ export default function StudioLayout({
   children: React.ReactNode;
 }) {
   return (
-    <main className="w-full h-[75vh] flex justify-center items-center overflow-auto ">
+    <main className="w-full   flex justify-center items-center overflow-auto ">
       {children}
       {/* <Nav /> */}
     </main>

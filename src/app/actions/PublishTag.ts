@@ -1,7 +1,28 @@
 "use server";
-import * as FS from "node:fs/promises";
 import PRISMA from "@/lib/prisma";
+import { BGSTYLE } from "@prisma/client";
 export default async function PublishTag(data: any) {
-  const write = await FS.writeFile("test.png", Buffer.from(data), "base64");
-  return write;
+  const { bank, tagRadius, bgStyle, bg, type, bankRadius, text } = data;
+  let status = "";
+  const tag = await PRISMA.tag
+    .create({
+      data: {
+        bank,
+        tagRadius,
+        bgStyle,
+        bg,
+        type,
+        bankRadius,
+        text,
+      },
+    })
+    .then((res) => {
+      status = "Success";
+      return res;
+    })
+    .catch(
+      (err) =>
+        (status = "Found a tag with the same Design ,please change you design")
+    );
+  return status;
 }
