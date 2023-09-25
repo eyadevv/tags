@@ -1,5 +1,5 @@
 "use client";
-import Preview from "@/src/components/Studio/Preview";
+import StudioPreview from "@/src/components/Studio/StudioPreview";
 
 const page = () => {
   const data = {
@@ -12,7 +12,7 @@ const page = () => {
   };
   return (
     <div className="w-full pt-2 h-[80vh] flex justify-center items-start overflow-clip  ">
-      <Preview data={data} />
+      <StudioPreview data={data} />
     </div>
   );
 };

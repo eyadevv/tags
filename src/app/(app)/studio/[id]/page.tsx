@@ -9,7 +9,7 @@
 // import Tag from "@/src/components/Tag/Tag";
 // import Studio from "@/src/components/Studio/Studio";
 import PRISMA from "@/lib/prisma";
-import Preview from "@/src/components/Studio/Preview";
+import StudioPreview from "@/src/components/Studio/StudioPreview";
 const Page = async ({ params }: { params: { id: string } }) => {
   // const [isPending, startTransition] = useTransition();
   // const [tagData, settagData] = useState({});
@@ -24,7 +24,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
     .catch(() => null);
   return (
     <div className="w-full pt-2 h-[80vh] flex justify-center items-start overflow-clip  ">
-      <Preview data={tag} />
+      <StudioPreview data={tag} />
     </div>
   );
 };

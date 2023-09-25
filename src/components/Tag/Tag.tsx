@@ -3,6 +3,7 @@ import { useRef, useTransition, ReactNode } from "react";
 import PublishTag from "@/src/app/actions/PublishTag";
 import { BiShare, BiReset, BiDownload } from "react-icons/bi";
 import { toPng } from "html-to-image";
+import test from "@/src/app/actions/test";
 const Tag = ({ state, dispatch }: any) => {
   const {
     id,
@@ -16,7 +17,7 @@ const Tag = ({ state, dispatch }: any) => {
     bankRadius,
     tagRadius,
   } = state;
-  const tagRef = useRef(null);
+  const tagRef: any = useRef(null);
   const [isPending, startTransition] = useTransition();
 
   const IMG = {
@@ -25,8 +26,8 @@ const Tag = ({ state, dispatch }: any) => {
         cacheBust: true,
         skipAutoScale: true,
         quality: 1,
-        height: 300,
-        width: 300,
+        height: 250,
+        width: 250,
       });
     },
     Download: async () => {
@@ -73,7 +74,16 @@ const Tag = ({ state, dispatch }: any) => {
         <Button
           title="Download"
           icon={<BiDownload className="w-6 h-6" />}
-          onClick={() => IMG.Download()}
+          onClick={() => {
+            return startTransition(async () => {
+              const status = await test(tagRef.current?.style.background);
+              if (status == 200) {
+                IMG.Download();
+              } else {
+                alert(status);
+              }
+            });
+          }}
         />
         <Button
           title="Reset"

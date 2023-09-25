@@ -20,20 +20,12 @@ const Preview = ({ data }: any) => {
         className="flex flex-col justify-center items-center gap-2 sm:flex-row-reverse"
       >
         <span
-          className={` relative flex h-56 w-56 flex-shrink-0 flex-col items-center p-4 justify-center gap-2 rounded overflow-clip`}
+          className={`flex h-56 w-56 flex-shrink-0 flex-col items-center p-4 justify-center gap-2 rounded overflow-clip`}
           style={{
             background: bg,
             borderRadius: tagRadius + "rem",
           }}
         >
-          <p className="absolute left-2 top-2">
-            {type === "PREMIUM" ? (
-              <BiSolidCrown color="gold" size={25} />
-            ) : type === "PAID" ? (
-              <BiDollar color="gold" size={25} />
-            ) : null}
-          </p>
-
           <img
             alt={bank || "bank"}
             src={`/${bank}.png`}
@@ -50,8 +42,8 @@ const Preview = ({ data }: any) => {
           <p className="text-sm">{phone}</p>
         </span>
       </a>
-      <div className="w-full h-16 flex flex-row justify-between items-center">
-        <p className=" text-black">
+      <div className="w-full text-black h-16 flex flex-row justify-between items-center">
+        <p className=" ">
           {type === "PREMIUM" ? (
             <BiSolidCrown color="gold" size={25} />
           ) : type === "PAID" ? (
@@ -60,7 +52,6 @@ const Preview = ({ data }: any) => {
             "FREE"
           )}
         </p>
-        <p>Community</p>
         <div className="w-10 h-10 bg-black rounded-full"></div>
       </div>
     </div>

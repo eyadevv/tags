@@ -3,7 +3,7 @@ import Tag from "@/src/components/Tag/Tag";
 import Studio from "@/src/components/Studio/Studio";
 import { useEffect, useState, useReducer } from "react";
 
-const Preview = ({ data }: any) => {
+const StudioPreview = ({ data }: any) => {
   const [local, setlocal] = useState(localStorage.getItem(data.id));
   useEffect(() => {
     switch (local) {
@@ -63,4 +63,4 @@ const Preview = ({ data }: any) => {
     </div>
   );
 };
-export default Preview;
+export default StudioPreview;
