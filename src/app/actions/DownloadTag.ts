@@ -10,5 +10,14 @@ export default async function FetchTag(id: number) {
     .then((res) => res)
     .catch(() => null);
 
-  return tag;
+  await PRISMA.tag.update({
+    where: {
+      id,
+    },
+    data: {
+      downloads: Number(tag?.downloads) + 1,
+    },
+  });
+
+  return 200;
 }

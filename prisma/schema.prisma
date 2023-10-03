@@ -3,7 +3,7 @@ generator client {
 }
 
 datasource db {
-  provider     = "mysql"
+  provider     = "postgresql"
   url          = env("DATABASE_URL")
   relationMode = "prisma"
 }
@@ -27,9 +27,8 @@ model user {
 }
 
 enum TAGSTYPE {
-  FREE
-  PREMIUM
-  PAID
+  COMMUNITY
+  ORIGINAL
 }
 
 enum BGSTYLE {
@@ -40,7 +39,8 @@ enum BGSTYLE {
 
 model tag {
   id         Int      @id @unique @default(autoincrement())
-  type       TAGSTYPE @default(FREE)
+  type       TAGSTYPE @default(COMMUNITY)
+  downloads  Int      @default(0)
   bank       String   @default("bankak")
   account    String   @default("247365")
   name       String   @default("Your Name")
@@ -53,13 +53,6 @@ model tag {
   icons      Boolean  @default(false)
   barcode    Boolean  @default(false)
   bgStyle    BGSTYLE  @default(SOLID)
-  // user        user?    @relation(fields: [userId], references: [id], "created")
-  // userId      String?
-  // creator     user?    @relation(fields: [creatorId, creatorName], references: [id, name], "used")
-  // creatorId   String?
-  // creatorName String   @default("ORIGINAL")
 
-  // @@index([creatorId, creatorName])
-  // @@index([userId])
   @@unique([bg, bank])
 }

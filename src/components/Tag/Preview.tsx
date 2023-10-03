@@ -1,11 +1,10 @@
-import { BiSolidCrown, BiDollar } from "react-icons/bi";
+import { BsFire } from "react-icons/bs";
 const Preview = ({ data }: any) => {
   const {
     id,
-    slug,
     bg,
     type,
-    bgStyle,
+    downloads,
     bank,
     account,
     name,
@@ -43,16 +42,19 @@ const Preview = ({ data }: any) => {
         </span>
       </a>
       <div className="w-full text-black h-16 flex flex-row justify-between items-center">
-        <p className=" ">
-          {type === "PREMIUM" ? (
-            <BiSolidCrown color="gold" size={25} />
-          ) : type === "PAID" ? (
-            <BiDollar color="gold" size={25} />
-          ) : (
-            "FREE"
-          )}
-        </p>
-        <div className="w-10 h-10 bg-black rounded-full"></div>
+        {type === "COMMUNITY" ? (
+          <p className="text-xs p-4 bg-black bg-opacity-75 text-white rounded-full">
+            {type}
+          </p>
+        ) : (
+          <p className="text-xs p-4 bg-orange-600 text-white rounded-full">
+            {type}
+          </p>
+        )}
+        <div className="text-xl font-bold flex gap-1 justify-center items-center">
+          <p>{downloads}</p>
+          <BsFire color="red" size={20} />
+        </div>
       </div>
     </div>
   );

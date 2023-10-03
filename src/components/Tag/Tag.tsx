@@ -3,7 +3,7 @@ import { useRef, useTransition, ReactNode } from "react";
 import PublishTag from "@/src/app/actions/PublishTag";
 import { BiShare, BiReset, BiDownload } from "react-icons/bi";
 import { toPng } from "html-to-image";
-import test from "@/src/app/actions/test";
+import DownloadTag from "@/src/app/actions/DownloadTag";
 const Tag = ({ state, dispatch }: any) => {
   const {
     id,
@@ -33,7 +33,7 @@ const Tag = ({ state, dispatch }: any) => {
     Download: async () => {
       const dataUrl = await IMG.PNG(tagRef.current);
       const link = document.createElement("a");
-      link.download = `${slug}.png`;
+      link.download = `${bgStyle + "-" + bank + "-" + "Tag"}.png`;
       link.href = dataUrl;
       link.click();
     },
@@ -76,11 +76,11 @@ const Tag = ({ state, dispatch }: any) => {
           icon={<BiDownload className="w-6 h-6" />}
           onClick={() => {
             return startTransition(async () => {
-              const status = await test(tagRef.current?.style.background);
+              const status = await DownloadTag(id);
               if (status == 200) {
                 IMG.Download();
               } else {
-                alert(status);
+                alert("Download Failed");
               }
             });
           }}

@@ -1,6 +1,6 @@
 import PRISMA from "@/lib/prisma";
 import Preview from "@/src/components/Tag/Preview";
-const page = async ({ params }: { params: { type: string } }) => {
+const page = async () => {
   const tags = await PRISMA.tag
     .findMany()
     .then((res: any) => {

@@ -8,7 +8,7 @@ import {
 const MobileMenu = () => {
   return (
     <ul className="flex-row-reverse h-[8vh] w-full bg-black px-[6%] gap-4 justify-between items-center hidden xs:flex ">
-      <Item content="الرئيسية" url="/tags" icon={<AiOutlineHome size={25} />} />
+      <Item content="الرئيسية" url="/" icon={<AiOutlineHome size={25} />} />
       <Item
         content="الأستديو"
         url="/studio"
@@ -19,7 +19,7 @@ const MobileMenu = () => {
         url="/library"
         icon={<AiOutlineTags size={25} />}
       />
-      <Item content="حسابي" url="/account" icon={<AiOutlineUser size={25} />} />
+      {/* <Item content="حسابي" url="/account" icon={<AiOutlineUser size={25} />} /> */}
     </ul>
   );
 };
