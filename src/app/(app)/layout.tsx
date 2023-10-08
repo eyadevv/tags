@@ -17,6 +17,7 @@ export default function TagLayout({ children }: { children: React.ReactNode }) {
         <Nav />
         <main className="w-screen relative flex-grow h-[80vh] flex flex-col justify-start items-center overflow-y-scroll overflow-x-clip ">
           {children}
+          <Footer />
         </main>
 
         <Link

@@ -1,7 +1,7 @@
 "use client";
 import { useRef, useTransition, ReactNode } from "react";
 import PublishTag from "@/src/app/actions/PublishTag";
-import { BiShare, BiReset, BiDownload } from "react-icons/bi";
+import { BiShare, BiReset, BiSolidDownload } from "react-icons/bi";
 import { toPng } from "html-to-image";
 import DownloadTag from "@/src/app/actions/DownloadTag";
 const Tag = ({ state, dispatch }: any) => {
@@ -16,6 +16,8 @@ const Tag = ({ state, dispatch }: any) => {
     phone,
     bankRadius,
     tagRadius,
+    color,
+    branch,
   } = state;
   const tagRef: any = useRef(null);
   const [isPending, startTransition] = useTransition();
@@ -46,13 +48,14 @@ const Tag = ({ state, dispatch }: any) => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center gap-2 sm:flex-row-reverse ">
+    <div className="flex flex-col justify-between w-11/12 items-center gap-2 sm:flex-row-reverse ">
       <span
         className={` relative flex h-56 w-56 flex-shrink-0 flex-col items-center p-4 justify-center gap-2 rounded overflow-clip`}
         ref={tagRef}
         style={{
           background: bg,
           borderRadius: tagRadius + "rem",
+          color: color,
         }}
       >
         <img
@@ -68,12 +71,13 @@ const Tag = ({ state, dispatch }: any) => {
 
         <p className="text-lg font-bold">{account}</p>
         <p className="text-base font-bold">{name}</p>
+        <p className="text-base font-bold">{branch || "branch"}</p>
         <p className="text-sm">{phone}</p>
       </span>
       <div className="flex flex-row gap-2 justify-center items-center sm:flex-col">
         <Button
           title="Download"
-          icon={<BiDownload className="w-6 h-6" />}
+          icon={<BiSolidDownload size={30} />}
           onClick={() => {
             return startTransition(async () => {
               const status = await DownloadTag(id);
@@ -87,7 +91,7 @@ const Tag = ({ state, dispatch }: any) => {
         />
         <Button
           title="Reset"
-          icon={<BiReset className="w-6 h-6" />}
+          icon={<BiReset size={30} />}
           onClick={() =>
             dispatch({
               type: "reset",
@@ -97,7 +101,7 @@ const Tag = ({ state, dispatch }: any) => {
         />
         <Button
           title="Publish"
-          icon={<BiShare className="w-6 h-6" />}
+          icon={<BiShare size={30} />}
           onClick={() => IMG.Publish()}
         />
       </div>
@@ -116,7 +120,7 @@ const Button = ({
   return (
     <button
       onClick={() => onClick()}
-      className="bg-black p-3 sm:p-1 text-white rounded-full flex flex-row justify-center items-center gap-2"
+      className="bg-black bg-opacity-75 p-3 sm:p-1 text-white rounded-full flex flex-row justify-center items-center gap-3"
     >
       {icon}
       <p className="sm:hidden">{title}</p>

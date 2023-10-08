@@ -11,15 +11,16 @@ const Preview = ({ data }: any) => {
     phone,
     bankRadius,
     tagRadius,
+    branch,
   } = data;
   return (
-    <div className="w-60 overflow-clip h-max gap-2 p-2 flex flex-col  justify-around rounded-xl bg-slate-200  ">
+    <div className="overflow-clip h-max gap-2 p-2 flex flex-col  justify-around rounded-xl bg-slate-200 w-56  ">
       <a
         href={`/studio/${id}`}
-        className="flex flex-col justify-center items-center gap-2 sm:flex-row-reverse"
+        className="flex h-full w-full   flex-shrink flex-col justify-center items-center gap-2 sm:flex-row-reverse"
       >
         <span
-          className={`flex h-56 w-56 flex-shrink-0 flex-col items-center p-4 justify-center gap-2 rounded overflow-clip`}
+          className={`flex h-full w-full flex-shrink flex-col items-center p-4 justify-center gap-2 rounded overflow-clip`}
           style={{
             background: bg,
             borderRadius: tagRadius + "rem",
@@ -38,6 +39,7 @@ const Preview = ({ data }: any) => {
 
           <p className="text-lg font-bold">{account}</p>
           <p className="text-base font-bold">{name}</p>
+          <p className="text-base font-bold">{branch || "branch"}</p>
           <p className="text-sm">{phone}</p>
         </span>
       </a>

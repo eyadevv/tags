@@ -2,15 +2,24 @@
 import Input from "./Input";
 import Select from "./Select";
 import Bgpicker from "./Bgpicker";
-import { useEffect, useState } from "react";
-import ReactGPicker from "react-gcolor-picker";
+import { useState } from "react";
 import Radius from "./Radius";
+import Colorpicker from "./Colorpicker";
 const Studio = ({ dispatch, state }: { dispatch: Function; state: any }) => {
   const [accountHint, setaccountHint]: any[] = useState(null);
   const [phoneHint, setphoneHint]: any[] = useState(null);
 
-  const { bg, bgStyle, bankRadius, tagRadius, phone, bank, name, account } =
-    state;
+  const {
+    bg,
+    bgStyle,
+    bankRadius,
+    tagRadius,
+    branch,
+    phone,
+    bank,
+    name,
+    account,
+  } = state;
 
   return (
     <div
@@ -62,6 +71,18 @@ const Studio = ({ dispatch, state }: { dispatch: Function; state: any }) => {
         placeholder="تأكد من مطابقة البيانات "
       />
       <Input
+        value={branch}
+        onChange={(e: any) => {
+          dispatch({
+            type: "update",
+            key: "branch",
+            value: e.target.value,
+          });
+        }}
+        lable="الفرع"
+        placeholder="تأكد من مطابقة البيانات "
+      />
+      <Input
         value={phone}
         hint={phoneHint}
         onChange={(e: any) => {
@@ -80,6 +101,7 @@ const Studio = ({ dispatch, state }: { dispatch: Function; state: any }) => {
         lable="رقم الهاتف"
         placeholder="+249"
       />
+
       {/* <span className="flex flex-row gap-2 justify-center items-center">
         <label htmlFor="checkbox">
           <p>إحفظ معلوماتي</p>
@@ -91,9 +113,14 @@ const Studio = ({ dispatch, state }: { dispatch: Function; state: any }) => {
           name="checkbox"
         />
       </span> */}
-      <Radius dispatch={dispatch} />
+      <Radius
+        bankRadius={state.bankRadius}
+        tagRadius={tagRadius}
+        dispatch={dispatch}
+      />
 
       <Bgpicker bgStyle={state.bgStyle} bg={state.bg} dispatch={dispatch} />
+      <Colorpicker dispatch={dispatch} />
     </div>
   );
 };

@@ -9,7 +9,7 @@ const page = async () => {
     .catch((err) => console.log(err));
 
   return (
-    <div className="h-max w-full flex flex-wrap justify-center items-start p-4 gap-2">
+    <div className="h-max w-full flex flex-row flex-wrap justify-center items-start p-4 gap-2 ">
       {tags ? (
         tags?.map((tag: any, id: any) => <Preview data={tag} key={id} />)
       ) : (

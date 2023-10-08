@@ -4,10 +4,11 @@ import Studio from "@/src/components/Studio/Studio";
 import { useEffect, useState, useReducer } from "react";
 
 const StudioPreview = ({ data }: any) => {
-  const [local, setlocal] = useState(localStorage.getItem(data.id));
+  const [local, setlocal] = useState("");
   useEffect(() => {
+    setlocal(localStorage.getItem(data.id) || "");
     switch (local) {
-      case null:
+      case "":
         localStorage.setItem(data.id, JSON.stringify(data));
         break;
       case local:
