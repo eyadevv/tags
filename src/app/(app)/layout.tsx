@@ -15,17 +15,10 @@ export default function TagLayout({ children }: { children: React.ReactNode }) {
     <html lang="en">
       <body className="w-screen flex-shrink-0 h-screen bg-gradient-to-b from-primary to-black text-white flex flex-col justify-between items-center overflow-auto gap-0">
         <Nav />
-        <main className="w-screen relative flex-grow h-[80vh] flex flex-col justify-start items-center overflow-y-scroll overflow-x-clip ">
+        <main className="w-screen flex-grow h-full flex flex-col justify-start items-center overflow-y-scroll overflow-x-clip ">
           {children}
-          <Footer />
         </main>
-
-        <Link
-          href="/studio"
-          className="w-12 hidden xs:flex h-12 absolute bottom-10 right-2 rounded bg-blue-900  justify-center items-center"
-        >
-          <AiOutlinePlus size={30} />
-        </Link>
+        <Footer />
 
         <Analytics />
       </body>

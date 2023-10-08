@@ -1,23 +1,18 @@
 "use client";
 import Tag from "@/src/components/Tag/Tag";
 import Studio from "@/src/components/Studio/Studio";
-import { useEffect, useState, useReducer } from "react";
+import { useEffect, useState, useReducer, useLayoutEffect } from "react";
 
 const StudioPreview = ({ data }: any) => {
-  const [local, setlocal] = useState("");
-  useEffect(() => {
-    setlocal(localStorage.getItem(data.id) || "");
-    switch (local) {
-      case "":
-        localStorage.setItem(data.id, JSON.stringify(data));
-        break;
-      case local:
-        dispatch({
-          type: "local",
-          local,
-        });
-      default:
-        break;
+  useLayoutEffect(() => {
+    const local = localStorage.getItem(data.id);
+    if (local === null) {
+      localStorage.setItem(data.id, JSON.stringify(data));
+    } else {
+      dispatch({
+        type: "local",
+        local,
+      });
     }
   }, [0]);
 
@@ -41,7 +36,6 @@ const StudioPreview = ({ data }: any) => {
         break;
       case "local":
         return JSON.parse(local);
-        break;
       case "reset":
         localStorage.setItem(data.id, JSON.stringify(data));
         return data;
@@ -53,12 +47,12 @@ const StudioPreview = ({ data }: any) => {
 
   const [state, dispatch] = useReducer(reducer, { ...data });
   return (
-    <div className="w-full  h-full flex flex-row  justify-start items-start sm:flex-col sm:items-center   ">
+    <div className="w-full  h-full flex flex-row  justify-between items-start sm:flex-col sm:items-center p-0 m-0   ">
       <div className="flex  justify-center overflow-clip flex-shrink  items-center w-1/3 h-max  sm:w-full ">
         <Tag state={state} dispatch={dispatch} />
       </div>
 
-      <div className="w-2/3 flex justify-center flex-shrink-0 h-full p-4 overflow-auto sm:w-full sm:h-[50vh] overflow-x-clip ">
+      <div className="w-2/3 flex justify-center flex-shrink-0 h-full px-4 overflow-auto sm:w-full sm:h-[50vh] overflow-x-clip ">
         <Studio dispatch={dispatch} state={state} />
       </div>
     </div>

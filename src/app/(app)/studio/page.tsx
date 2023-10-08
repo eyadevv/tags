@@ -11,7 +11,7 @@ const page = () => {
     bg: "black",
   };
   return (
-    <div className="w-full pt-2 h-[80vh] flex justify-center items-start overflow-clip  ">
+    <div className="w-full h-full p-0 m-0 flex justify-start items-between overflow-clip  ">
       <StudioPreview data={data} />
     </div>
   );

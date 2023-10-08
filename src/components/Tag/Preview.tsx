@@ -14,7 +14,7 @@ const Preview = ({ data }: any) => {
     branch,
   } = data;
   return (
-    <div className="overflow-clip h-max gap-2 p-2 flex flex-col  justify-around rounded-xl bg-slate-200 w-56  ">
+    <div className="overflow-clip h-max gap-2 flex flex-col  justify-around rounded-xl bg-slate-200 w-56  ">
       <a
         href={`/studio/${id}`}
         className="flex h-full w-full   flex-shrink flex-col justify-center items-center gap-2 sm:flex-row-reverse"

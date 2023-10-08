@@ -23,7 +23,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
     .then((res) => res)
     .catch(() => null);
   return (
-    <div className="w-full pt-2 h-[80vh] flex justify-center items-start overflow-clip  ">
+    <div className="w-full h-full flex justify-center items-start overflow-clip  ">
       <StudioPreview data={tag} />
     </div>
   );

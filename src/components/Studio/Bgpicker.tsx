@@ -71,7 +71,7 @@ const Bgpicker = ({
       </div>
       {bgStyle === "GRADIENT" ? (
         <ReactGPicker
-          value="red"
+          value={bg}
           gradient={true}
           solid={false}
           colorBoardHeight={200}
@@ -86,7 +86,7 @@ const Bgpicker = ({
         />
       ) : bgStyle === "SOLID" ? (
         <ReactGPicker
-          value="red"
+          value={bg}
           solid={true}
           colorBoardHeight={200}
           popupWidth={""}
