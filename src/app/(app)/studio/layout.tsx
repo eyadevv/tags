@@ -1,4 +1,4 @@
-// import Nav from "@/src/components/Studio/Nav";
+import Footer from "@/src/components/Footer/Footer";
 import "@/style/global.css";
 
 export default function StudioLayout({

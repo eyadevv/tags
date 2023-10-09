@@ -1,18 +1,7 @@
-// import {
-//   useTransition,
-//   useEffect,
-//   useState,
-//   useReducer,
-//   useLayoutEffect,
-// } from "react";
-// import FetchTag from "@/src/app/actions/FetchTag";
-// import Tag from "@/src/components/Tag/Tag";
-// import Studio from "@/src/components/Studio/Studio";
 import PRISMA from "@/lib/prisma";
+import Footer from "@/src/components/Footer/Footer";
 import StudioPreview from "@/src/components/Studio/StudioPreview";
 const Page = async ({ params }: { params: { id: string } }) => {
-  // const [isPending, startTransition] = useTransition();
-  // const [tagData, settagData] = useState({});
   const { id } = params;
   const tag = await PRISMA.tag
     .findUnique({
@@ -23,8 +12,9 @@ const Page = async ({ params }: { params: { id: string } }) => {
     .then((res) => res)
     .catch(() => null);
   return (
-    <div className="w-full h-full flex justify-center items-start overflow-clip  ">
+    <div className="w-full h-full flex flex-col justify-center items-start  ">
       <StudioPreview data={tag} />
+      {/* <Footer /> */}
     </div>
   );
 };

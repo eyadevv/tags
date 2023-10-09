@@ -30,7 +30,7 @@ const Studio = ({ dispatch, state }: { dispatch: Function; state: any }) => {
         header="إختر البنك"
         options={["bankak", "ocash", "fawry"]}
         value={bank}
-        placeholder="البنك"
+        placeholder={"البنك"}
         onChange={(e: any) =>
           dispatch({
             type: "update",
@@ -120,7 +120,7 @@ const Studio = ({ dispatch, state }: { dispatch: Function; state: any }) => {
       />
 
       <Bgpicker bgStyle={state.bgStyle} bg={state.bg} dispatch={dispatch} />
-      <Colorpicker dispatch={dispatch} />
+      {/* <Colorpicker dispatch={dispatch} /> */}
     </div>
   );
 };

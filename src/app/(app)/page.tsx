@@ -1,4 +1,5 @@
 import PRISMA from "@/lib/prisma";
+import Footer from "@/src/components/Footer/Footer";
 import Preview from "@/src/components/Tag/Preview";
 import Link from "next/link";
 import { AiOutlinePlus } from "react-icons/ai";

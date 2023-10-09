@@ -50,7 +50,7 @@ const Tag = ({ state, dispatch }: any) => {
   return (
     <div className="flex flex-col justify-between w-11/12 items-center gap-2 sm:flex-row-reverse ">
       <span
-        className={` relative flex h-56 w-56 flex-shrink-0 flex-col items-center p-4 justify-center gap-2 rounded overflow-clip`}
+        className={` relative flex h-64 w-64 flex-shrink-0 flex-col items-center p-4 justify-center gap-2 rounded overflow-clip`}
         ref={tagRef}
         style={{
           background: bg,
