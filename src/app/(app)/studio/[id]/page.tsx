@@ -14,7 +14,6 @@ const Page = async ({ params }: { params: { id: string } }) => {
   return (
     <div className="w-full h-full flex flex-col justify-center items-start  ">
       <StudioPreview data={tag} />
-      {/* <Footer /> */}
     </div>
   );
 };
