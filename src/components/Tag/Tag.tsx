@@ -28,8 +28,8 @@ const Tag = ({ state, dispatch }: any) => {
         cacheBust: true,
         skipAutoScale: true,
         quality: 1,
-        height: 250,
-        width: 250,
+        height: 500,
+        width: 500,
       });
     },
     Download: async () => {
