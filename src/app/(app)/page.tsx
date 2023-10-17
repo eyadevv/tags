@@ -1,6 +1,6 @@
 import PRISMA from "@/lib/prisma";
 import Preview from "@/src/components/Tag/Preview";
-
+export const dynamic = "force-dynamic";
 const page = async () => {
   const tags = await PRISMA.tag
     .findMany({
