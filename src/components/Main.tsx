@@ -39,10 +39,6 @@ const Main = ({ tags }: { tags: any }) => {
         ref={ref}
         className=" w-full sm:h-[60vh] -z-10 h-[30vh] absolute bottom-0"
       ></animated.div>
-      {/* <div className=" sticky -top-full bottom-1 left-[95vw] -right-full text-white ">
-        {ispending ? "Loading " : null}
-      </div> */}
-      // using react spring create animation
       <animated.p>
         {done && !ispending ? "That's All " : ispending ? "Loading" : null}
       </animated.p>
