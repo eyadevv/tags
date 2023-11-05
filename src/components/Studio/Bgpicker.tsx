@@ -10,7 +10,10 @@ const Bgpicker = ({
   bg: string;
 }) => {
   return (
-    <div className="flex flex-col justify-center items-start gap-3 sm:w-full w-max h-max">
+    <div
+      dir="rtl"
+      className="flex flex-col justify-center items-start gap-3 sm:w-full w-max h-max"
+    >
       <p className="">الخفلية</p>
       <div className="flex flex-row gap-2 w-full h-full overflow-scroll ">
         <div className="flex flex-row gap-2">

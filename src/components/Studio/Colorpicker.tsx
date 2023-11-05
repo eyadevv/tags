@@ -1,7 +1,7 @@
 import ReactGPicker from "react-gcolor-picker";
 const Colorpicker = ({ dispatch }: { dispatch: Function }) => {
   return (
-    <div>
+    <div dir="rtl">
       <p>النص</p>
       <ReactGPicker
         value="red"

@@ -3,8 +3,10 @@ generator client {
 }
 
 datasource db {
-  provider     = "mysql"
-  url          = env("DATABASE_URL")
+  provider     = "postgresql"
+  // url          = env("DATABASE_URL")
+  url          = "postgresql://dev:dev@localhost:5432/tags"
+  // url          = "mysql://dzfxrx2zcaxye0kf9zz6:pscale_pw_OMRFFfxGwimoURFYPqC40NJp4CKR3oQeNJ7csa5Dio6@aws.connect.psdb.cloud/tags?sslaccept=strict"
   relationMode = "prisma"
 }
 

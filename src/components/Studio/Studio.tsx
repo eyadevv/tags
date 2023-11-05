@@ -23,8 +23,8 @@ const Studio = ({ dispatch, state }: { dispatch: Function; state: any }) => {
 
   return (
     <div
-      dir="rtl"
-      className=" flex flex-col gap-2 w-full h-full  items-start p-0"
+      // dir="rtl"
+      className="flex flex-col gap-2 w-2/3 h-full sm:w-full p-2 items-end justify-start overflow-auto"
     >
       <Select
         header="إختر البنك"

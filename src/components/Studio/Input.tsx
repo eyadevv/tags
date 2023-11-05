@@ -12,7 +12,7 @@ const Input = ({
   hint?: string;
 }) => {
   return (
-    <div className="form-control sm:w-full  w-1/2 text-lg ">
+    <div dir="rtl" className="form-control sm:w-full  w-1/2 text-lg ">
       <label className="label">
         <span className="">{lable}</span>
         <span className="label-text-alt text-red-200">{hint}</span>

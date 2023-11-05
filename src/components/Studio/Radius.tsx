@@ -8,7 +8,10 @@ const Radius = ({
   dispatch: Function;
 }) => {
   return (
-    <div className="sm:w-full  w-w-sm  gap-2 flex flex-col justify-center items-start">
+    <div
+      dir="rtl"
+      className="sm:w-full  w-w-sm  gap-2 flex flex-col justify-center items-start"
+    >
       <div className="flex flex-col gap-2 ">
         <p>Bank Radius</p>
         <input

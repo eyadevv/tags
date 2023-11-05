@@ -47,14 +47,11 @@ const StudioPreview = ({ data }: any) => {
 
   const [state, dispatch] = useReducer(reducer, { ...data });
   return (
-    <main className="w-full  h-full flex flex-row  justify-between items-center sm:flex-col sm:justify-start bg-white ">
-      <div className="flex  justify-center overflow-clip flex-shrink-0  items-center w-1/3 h-max  sm:w-full">
+    <main className="w-full h-full pt-2 flex flex-row  justify-between items-start sm:flex-col sm:items-center overflow-clip ">
+      <div className="flex  justify-center overflow-clip flex-shrink-0  items-center w-1/3 h-full  sm:w-full sm:h-max">
         <Tag state={state} dispatch={dispatch} />
       </div>
-
-      <div className="w-2/3 flex flex-col justify-center flex-shrink-0 h-full px-4 overflow-auto sm:w-full overflow-x-clip ">
-        <Studio dispatch={dispatch} state={state} />
-      </div>
+      <Studio dispatch={dispatch} state={state} />
     </main>
   );
 };

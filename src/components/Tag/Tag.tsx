@@ -4,7 +4,7 @@ import PublishTag from "@/src/app/actions/PublishTag";
 import { BiShare, BiReset, BiSolidDownload } from "react-icons/bi";
 import { toPng } from "html-to-image";
 import DownloadTag from "@/src/app/actions/DownloadTag";
-const Tag = ({ state, dispatch }: any) => {
+const Tag: any = ({ state, dispatch }: any) => {
   const {
     id,
     slug,
@@ -27,15 +27,16 @@ const Tag = ({ state, dispatch }: any) => {
       return await toPng(current, {
         cacheBust: true,
         skipAutoScale: true,
+        pixelRatio: 2,
         quality: 1,
-        height: 500,
-        width: 500,
+        height: 250,
+        width: 250,
       });
     },
     Download: async () => {
       const dataUrl = await IMG.PNG(tagRef.current);
       const link = document.createElement("a");
-      link.download = `${bgStyle + "-" + bank + "-" + "Tag"}.png`;
+      link.download = `${bgStyle}-${bank}-${account}.png`;
       link.href = dataUrl;
       link.click();
     },
