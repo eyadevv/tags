@@ -58,7 +58,7 @@ const Tag: any = ({ state, dispatch }: any) => {
   return (
     <div className="flex flex-col justify-between w-11/12 items-center gap-2 sm:flex-row-reverse ">
       <span
-        className={` relative flex sm:w-56 sm:h-56 flex-col items-center p-4 justify-center gap-2 rounded overflow-clip`}
+        className={` relative flex sm:w-56 sm:h-56 w-64 h-64 flex-col items-center p-4 justify-center gap-2 rounded overflow-clip`}
         ref={tagRef}
         style={{
           background: bg,
@@ -69,8 +69,8 @@ const Tag: any = ({ state, dispatch }: any) => {
         <img
           alt={bank || "bank"}
           src={`/${bank}.png`}
-          width={720}
-          height={1080}
+          width={256}
+          height={256}
           style={{
             borderRadius: bankRadius + "rem",
           }}
