@@ -1,5 +1,4 @@
 import PRISMA from "@/lib/prisma";
-import Footer from "@/src/components/Footer/Footer";
 import StudioPreview from "@/src/components/Studio/StudioPreview";
 const Page = async ({ params }: { params: { id: string } }) => {
   const { id } = params;
