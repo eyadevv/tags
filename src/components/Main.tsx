@@ -3,7 +3,6 @@ import { useInView, animated } from "@react-spring/web";
 import Preview from "./Tag/Preview";
 import Load from "@/src/app/actions/Load";
 import { useEffect, useState, useTransition } from "react";
-import { $Enums } from "@prisma/client";
 const Main = ({ tags }: { tags: any }) => {
   const [ref, inview] = useInView();
   const [ispending, startTransition] = useTransition();

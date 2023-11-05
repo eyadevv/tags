@@ -26,11 +26,18 @@ const Tag: any = ({ state, dispatch }: any) => {
     PNG: async (current: any) => {
       return await toPng(current, {
         cacheBust: true,
-        skipAutoScale: true,
-        pixelRatio: 2,
         quality: 1,
-        height: 250,
-        width: 250,
+        canvasHeight: 500,
+        canvasWidth: 500,
+        height: 500,
+        width: 500,
+        style: {
+          height: "500px",
+          width: "500px",
+          maxHeight: "500px",
+          maxWidth: "500px",
+          scale: "1",
+        },
       });
     },
     Download: async () => {
@@ -51,7 +58,7 @@ const Tag: any = ({ state, dispatch }: any) => {
   return (
     <div className="flex flex-col justify-between w-11/12 items-center gap-2 sm:flex-row-reverse ">
       <span
-        className={` relative flex h-64 w-64 sm:w-56 sm:h-56 flex-col items-center p-4 justify-center gap-2 rounded overflow-clip`}
+        className={` relative flex sm:w-56 sm:h-56 flex-col items-center p-4 justify-center gap-2 rounded overflow-clip`}
         ref={tagRef}
         style={{
           background: bg,
