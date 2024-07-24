@@ -22,7 +22,7 @@ Tags is a simple yet powerful website that allows Sudanese users to design custo
 
 ## Demo
 
-Check out a live demo of the website [here](https://tagz.vercel.app).
+Check out a live demo of the website [here](https://tagzz.vercel.app).
 
 ! Due to a lack of free-tier DB Providers this website doesn't have access to a DB
 
@@ -74,5 +74,3 @@ Please ensure your code adheres to our coding standards and includes tests where
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
 
 ---
-
-Make sure to replace the placeholders (like `path/to/logo.png`, `path/to/demo.gif`, `path/to/home_page_screenshot.png`, etc.) with actual paths to your images or resources. You can upload these images to your repository or use an image hosting service and link to them accordingly.
