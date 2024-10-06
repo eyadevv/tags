@@ -43,13 +43,7 @@ const Preview = ({ data }: any) => {
           <p className="text-sm">{phone}</p>
         </span>
       </a>
-      <div className="w-full text-white h-16 flex flex-row justify-between items-center">
-        <p className="text-sm text-emerald-600">{"#" + type}</p>
-        <div className="text-sm flex gap-1 justify-center items-center">
-          <p>{downloads}</p>
-          <BsFire color="red" size={20} />
-        </div>
-      </div>
+
     </div>
   );
 };

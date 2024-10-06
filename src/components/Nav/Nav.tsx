@@ -3,12 +3,12 @@ import { MdMenu } from "react-icons/md";
 
 const Nav = () => {
   return (
-    <nav className="drawer w-full px-[6%] py-4 h-max min-h-[10vh] flex-shrink-0 flex flex-row-reverse justify-between z-10 items-center bg-black">
+    <nav className="drawer w-11/12 rounded-full  p-2 h-max flex-shrink-0 flex flex-row justify-between z-10 items-center bg-black">
       <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex flex-col w-full">
-        <div className="w-full navbar flex flex-row-reverse justify-between items-center">
+        <div className="w-full navbar flex flex-row justify-between items-center">
           <Link href="/">
-            <h2 className="text-5xl font-bold sm:text-2xl">تاغز</h2>
+            <h2 className="text-5xl font-bold sm:text-2xl">Tagz</h2>
           </Link>
           <div className="hidden sm:flex">
             <label
@@ -37,10 +37,10 @@ const Nav = () => {
                 href="/"
                 className="flex flex-col justify-center items-center"
               >
-                <p>الرئيسية</p>
+                <p>Home</p>
               </Link>
-              <Link href="/studio">الأستديو</Link>
-              <Link href="/about">عنا</Link>
+              <Link href="/studio">Studio</Link>
+              <Link href="/about">About</Link>
             </ul>
           </div>
         </div>
