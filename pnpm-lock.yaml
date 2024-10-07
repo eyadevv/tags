@@ -8,12 +8,6 @@ importers:
 
   .:
     dependencies:
-      '@napi-rs/canvas-linux-x64-gnu':
-        specifier: ^0.1.56
-        version: 0.1.56
-      '@napi-rs/canvas-linux-x64-musl':
-        specifier: ^0.1.56
-        version: 0.1.56
       '@prisma/client':
         specifier: ^5.2.0
         version: 5.2.0(prisma@5.2.0)
@@ -196,16 +190,6 @@ packages:
   '@mapbox/node-pre-gyp@1.0.11':
     resolution: {integrity: sha512-Yhlar6v9WQgUp/He7BdgzOz8lqMQ8sU+jkCq7Wx8Myc5YFJLbEe7lgui/V7G1qB1DJykHSGwreceSaD60Y0PUQ==}
     hasBin: true
-
-  '@napi-rs/canvas-linux-x64-gnu@0.1.56':
-    resolution: {integrity: sha512-JTnGAtJBQMhfSpN8/rbMnf5oxuO/juUNa0n4LA0LlW0JS9UBpmsS2BwFNCakFqOeAPaqIM6sFFsK3M4hve+Esw==}
-    engines: {node: '>= 10'}
-    os: [linux]
-
-  '@napi-rs/canvas-linux-x64-musl@0.1.56':
-    resolution: {integrity: sha512-mpws7DhVDIj8ZKa/qcnUVLAm0fxD9RK5ojfNNSI9TOzn2E0f+GUXx8sGsCxDpMVMtN+mtyrMwRqH3F3rTUMWXw==}
-    engines: {node: '>= 10'}
-    os: [linux]
 
   '@next/env@14.2.6':
     resolution: {integrity: sha512-bs5DFKV+08EjWrl8EB+KKqev1ZTNONH1vFCaHh911aaB362NnP32UDTbE9VQhyiAgbFqJsfDkSxFERNDDb3j0g==}
@@ -2518,10 +2502,6 @@ snapshots:
     transitivePeerDependencies:
       - encoding
       - supports-color
-
-  '@napi-rs/canvas-linux-x64-gnu@0.1.56': {}
-
-  '@napi-rs/canvas-linux-x64-musl@0.1.56': {}
 
   '@next/env@14.2.6': {}
 
