@@ -12,9 +12,6 @@
     "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
   },
   "dependencies": {
-    "@napi-rs/canvas": "^0.1.56",
-    "@napi-rs/canvas-linux-x64-gnu": "^0.1.56",
-    "@napi-rs/canvas-linux-x64-musl": "^0.1.56",
     "@prisma/client": "^5.2.0",
     "@radix-ui/react-slider": "^1.1.2",
     "@react-spring/web": "^9.7.3",
@@ -28,7 +25,6 @@
     "dom-to-image-more": "^3.1.6",
     "eslint": "8.48.0",
     "eslint-config-next": "13.4.19",
-    "file-loader": "^6.2.0",
     "html-to-image": "^1.11.11",
     "html2canvas": "^1.4.1",
     "next": "14.2.6",
