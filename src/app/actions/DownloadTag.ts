@@ -1,5 +1,5 @@
 "use server";
-import { CanvasRenderingContext2D, createCanvas } from "canvas";
+import { CanvasRenderingContext2D, createCanvas } from "@napi-rs/canvas";
 import { NextResponse } from "next/server";
 
 // Function to extract colors from a CSS linear gradient string
