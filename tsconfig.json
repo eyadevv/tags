@@ -28,7 +28,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/app/actions/DownloadTag.js"
+    "src/app/actions/DownloadTag.ts"
   ],
   "exclude": ["node_modules", "archive", ".next"]
 }
