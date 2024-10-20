@@ -1,5 +1,5 @@
 "use server";
-import { CanvasRenderingContext2D, createCanvas } from "canvas";
+import { createCanvas } from "@napi-rs/canvas";
 import { NextResponse } from "next/server";
 
 // Function to extract colors from a CSS linear gradient string
@@ -15,7 +15,7 @@ function parseGradient(gradient: string) {
   return colors;
 }
 
-export default async function FetchTag(id: number | string, state: any) {
+export default async function FetchTag(id, state) {
   const width = 360;
   const height = 360;
 
@@ -101,14 +101,7 @@ export default async function FetchTag(id: number | string, state: any) {
 }
 
 // Function to draw a rounded rectangle
-function drawRoundedRect(
-  ctx: CanvasRenderingContext2D,
-  x: number,
-  y: number,
-  width: number,
-  height: number,
-  radius: number
-) {
+function drawRoundedRect(ctx, x, y, width, height, radius) {
   ctx.beginPath();
   ctx.moveTo(x + radius, y);
   ctx.lineTo(x + width - radius, y);
